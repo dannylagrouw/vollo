@@ -8,6 +8,7 @@ import static java.util.Arrays.asList;
 
 @Getter
 public enum DomainEntity {
+    gebruiker(Gebruiker.class),
     groep(Groep.class),
     groepLeerling(GroepLeerling.class),
     groepMedewerker(GroepMedewerker.class),
@@ -16,6 +17,7 @@ public enum DomainEntity {
     medewerker(Medewerker.class),
     ouder(Ouder.class),
     ouderLeerling(OuderLeerling.class),
+    rol(Rol.class),
     school(School.class);
 
     static {
