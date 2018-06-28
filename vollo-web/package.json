@@ -11,13 +11,18 @@
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom",
-    "eject": "react-scripts-ts eject"
+    "eject": "react-scripts-ts eject",
+    "watch": "npm-watch"
+  },
+  "watch": {
+    "build": "src/"
   },
   "devDependencies": {
     "@types/jest": "^23.1.1",
     "@types/node": "^10.3.5",
     "@types/react": "^16.4.1",
     "@types/react-dom": "^16.0.6",
+    "npm-watch": "^0.3.0",
     "typescript": "^2.9.2"
   }
 }
