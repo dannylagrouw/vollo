@@ -17,7 +17,7 @@ class MijnGroepen extends React.Component<MijnGroepenProps, MijnGroepenState> {
     fetch('http://localhost:8080/mijn-groepen', {
       method: 'get',
       headers: new Headers({
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInppcCI6IkdaSVAifQ.H4sIAAAAAAAAAKtWyiwuVrJSKsvPyclX0lHKTCxRsjI0NTYwNDYwNjfSUUqtKIAIGBmamYME0lOTikozs1OLivMSE3OBWrOVagFEjuE9RgAAAA.Gw1j14xA_jHPFCb4tU5ZVLRle3cIs1y0u8aHiu79mio'
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInppcCI6IkdaSVAifQ.H4sIAAAAAAAAAKtWyiwuVrJSKsvPyclX0lHKTCxRsjI0NTYwMrQwNDPQUUqtKIAIGBuYmIIE0lOTikozs1OLivMSE3OBWrOVagFdvT1xRgAAAA.BgeiKiwLH635PUgUq_3Fj5SayZ6YO6HDPjix4UnkzUQ'
       })
     })
         .then(result => result.json())
