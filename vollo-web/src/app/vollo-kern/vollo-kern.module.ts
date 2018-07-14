@@ -4,9 +4,10 @@ import { MijnGroepenComponent } from "./mijn-groepen/mijn-groepen.component";
 import { InloggenComponent } from "./inloggen/inloggen.component";
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
+import { VolloMaterialModule } from "../vollo-material.module";
 
 @NgModule({
-  imports: [CommonModule, FormsModule, HttpClientModule],
+  imports: [CommonModule, FormsModule, HttpClientModule, VolloMaterialModule],
   declarations: [MijnGroepenComponent, InloggenComponent],
   exports: [MijnGroepenComponent, InloggenComponent]
 })

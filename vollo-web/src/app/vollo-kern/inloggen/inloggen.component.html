@@ -1,10 +1,15 @@
 <div *ngIf="!(token$ | async)">
   <form #inloggenForm="ngForm" (ngSubmit)="inloggen()">
-    Gebruikersnaam: <input [(ngModel)]="form.gebruikersnaam" name="gebruikersnaam">
-    <br/>
-    Wachtwoord: <input [(ngModel)]="form.wachtwoord" name="wachtwoord">
-    <br/>
-    <button type="submit">Log in</button>
+    <mat-form-field>
+      <input matInput placeholder="Gebruikersnaam" [(ngModel)]="form.gebruikersnaam" name="gebruikersnaam">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Wachtwoord" [(ngModel)]="form.wachtwoord" name="wachtwoord">
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">
+      <mat-icon fontIcon="fa-sign-in-alt"></mat-icon>
+      <span>Log in</span>
+    </button>
   </form>
 </div>
 <div *ngIf="token$ | async">Token: {{token$ | async}}</div>
