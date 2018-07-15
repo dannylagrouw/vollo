@@ -22,9 +22,6 @@ export class InloggenComponent implements OnInit {
   ngOnInit() {}
 
   inloggen() {
-    console.info("Inloggen", this.form);
-    this.store
-      .dispatch(new InloggenAction(this.form.gebruikersnaam, this.form.wachtwoord))
-      .subscribe(x => console.info("dispatched", x));
+    this.store.dispatch(new InloggenAction(this.form.gebruikersnaam, this.form.wachtwoord));
   }
 }
