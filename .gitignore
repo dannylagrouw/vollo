@@ -1,3 +1,7 @@
 .idea
 target
 *.iml
+vollo-kern/.classpath
+vollo-kern/.factorypath
+vollo-kern/.project
+vollo-kern/.settings
