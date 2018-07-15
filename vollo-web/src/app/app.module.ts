@@ -11,6 +11,7 @@ import { InloggenComponent } from "./vollo-kern/inloggen/inloggen.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { VolloMaterialModule } from "./vollo-material.module";
 import { MatIconModule, MatIconRegistry } from "@angular/material";
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,7 +21,8 @@ import { MatIconModule, MatIconRegistry } from "@angular/material";
     MatIconModule,
     VolloMaterialModule,
     VolloKernModule,
-    NgxsModule.forRoot([VolloState])
+    NgxsModule.forRoot([VolloState]),
+    FlexLayoutModule
   ],
   providers: [MatIconRegistry, InloggenService],
   bootstrap: [AppComponent]

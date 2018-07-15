@@ -5,9 +5,10 @@ import { InloggenComponent } from "./inloggen/inloggen.component";
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { VolloMaterialModule } from "../vollo-material.module";
+import { FlexLayoutModule } from "../../../node_modules/@angular/flex-layout";
 
 @NgModule({
-  imports: [CommonModule, FormsModule, HttpClientModule, VolloMaterialModule],
+  imports: [CommonModule, FormsModule, FlexLayoutModule, HttpClientModule, VolloMaterialModule],
   declarations: [MijnGroepenComponent, InloggenComponent],
   exports: [MijnGroepenComponent, InloggenComponent]
 })

@@ -18,6 +18,7 @@
     "@angular/common": "^6.0.9",
     "@angular/compiler": "^6.0.9",
     "@angular/core": "^6.0.9",
+    "@angular/flex-layout": "github:angular/flex-layout-builds",
     "@angular/forms": "^6.0.9",
     "@angular/http": "^6.0.9",
     "@angular/material": "^6.3.3",
@@ -26,6 +27,7 @@
     "@angular/router": "^6.0.9",
     "@ngxs/store": "^3.1.4",
     "core-js": "^2.4.1",
+    "flex-layout-srcs": "github:angular/flex-layout",
     "normalize.css": "^8.0.0",
     "rxjs": "^6.2.1",
     "zone.js": "^0.8.19"

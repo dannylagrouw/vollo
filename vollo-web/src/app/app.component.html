@@ -16,11 +16,8 @@
         </button>  
       </span>
     </mat-toolbar>
-    <p><button mat-raised-button color="primary" (click)="sidenav.toggle()">sidenav.toggle()</button></p>
-
-    <mat-icon fontIcon="fa-times-circle"></mat-icon>
-    <i class="fa fa-check"></i>
-    <vollo-inloggen></vollo-inloggen>
-    <vollo-mijn-groepen></vollo-mijn-groepen>
-  </mat-sidenav-content>
+    <div class="content" fxLayout="row" fxLayoutAlign="center">
+      <vollo-inloggen></vollo-inloggen>
+    </div>
+</mat-sidenav-content>
 </mat-sidenav-container>
