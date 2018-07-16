@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { VolloMaterialModule } from '../vollo-material.module';
 import { FlexLayoutModule } from '../../../node_modules/@angular/flex-layout';
 import { RouterModule } from '../../../node_modules/@angular/router';
+import { MijnGroepenService } from './mijn-groepen/mijn-groepen.service';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { RouterModule } from '../../../node_modules/@angular/router';
     VolloMaterialModule
   ],
   declarations: [MijnGroepenComponent, InloggenComponent],
-  exports: [MijnGroepenComponent, InloggenComponent]
+  exports: [MijnGroepenComponent, InloggenComponent],
+  providers: [MijnGroepenService]
 })
 export class VolloKernModule {}

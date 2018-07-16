@@ -1,12 +1,15 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
+import { MijnGroepenService } from './mijn-groepen.service';
 
 @Component({
-  selector: "vollo-mijn-groepen",
-  templateUrl: "./mijn-groepen.component.html",
-  styleUrls: ["./mijn-groepen.component.scss"]
+  selector: 'vollo-mijn-groepen',
+  templateUrl: './mijn-groepen.component.html',
+  styleUrls: ['./mijn-groepen.component.scss']
 })
 export class MijnGroepenComponent implements OnInit {
-  constructor() {}
+  constructor(private mijnGroepenService: MijnGroepenService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.mijnGroepenService.ophalen().subscribe(data => console.info('mijn groepen', data));
+  }
 }

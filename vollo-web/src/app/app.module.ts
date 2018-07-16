@@ -17,7 +17,7 @@ import { MijnGroepenComponent } from './vollo-kern/mijn-groepen/mijn-groepen.com
 
 const appRoutes: Routes = [
   { path: 'inloggen', component: InloggenComponent },
-  { path: 'mijngroepen', component: MijnGroepenComponent },
+  { path: 'mijn-groepen', component: MijnGroepenComponent },
   {
     path: '',
     redirectTo: '/inloggen',
