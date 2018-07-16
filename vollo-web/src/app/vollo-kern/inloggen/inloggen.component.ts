@@ -1,20 +1,20 @@
-import { Component, OnInit } from "@angular/core";
-import { Select, Store } from "@ngxs/store";
-import { InloggenAction } from "../../state/vollo.state";
-import { Observable } from "rxjs";
+import { Component, OnInit } from '@angular/core';
+import { Select, Store } from '@ngxs/store';
+import { InloggenAction, GebruikerState } from '../../state/vollo.state';
+import { Observable } from 'rxjs';
 
 @Component({
-  selector: "vollo-inloggen",
-  templateUrl: "./inloggen.component.html",
-  styleUrls: ["./inloggen.component.scss"]
+  selector: 'vollo-inloggen',
+  templateUrl: './inloggen.component.html',
+  styleUrls: ['./inloggen.component.scss']
 })
 export class InloggenComponent implements OnInit {
-  @Select(state => state.vollo.token)
-  token$: Observable<string>;
+  @Select(state => state.vollo.gebruiker)
+  gebruiker$: Observable<GebruikerState>;
 
   form = {
-    gebruikersnaam: "",
-    wachtwoord: ""
+    gebruikersnaam: '',
+    wachtwoord: ''
   };
 
   constructor(private store: Store) {}

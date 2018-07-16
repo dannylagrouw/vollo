@@ -1,17 +1,31 @@
-  <div fxFlex="1 1 400px">
-    <div *ngIf="!(token$ | async)">
-      <form #inloggenForm="ngForm" (ngSubmit)="inloggen()">
-        <mat-form-field>
-          <input matInput placeholder="Gebruikersnaam" [(ngModel)]="form.gebruikersnaam" name="gebruikersnaam">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Wachtwoord" [(ngModel)]="form.wachtwoord" name="wachtwoord">
-        </mat-form-field>
-        <button mat-raised-button color="primary" type="submit">
-          <mat-icon fontIcon="fa-sign-in-alt"></mat-icon>
-          <span>Log in</span>
-        </button>
-      </form>
-    </div>
-    <div *ngIf="token$ | async">Token: {{token$ | async}}</div>
+<div fxFlex="1 1 400px">
+  <div *ngIf="!(gebruiker$ | async).ingelogd">
+    <form #inloggenForm="ngForm"
+          (ngSubmit)="inloggen()">
+      <mat-form-field>
+        <input matInput
+               placeholder="Gebruikersnaam"
+               [(ngModel)]="form.gebruikersnaam"
+               name="gebruikersnaam">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput
+               placeholder="Wachtwoord"
+               [(ngModel)]="form.wachtwoord"
+               name="wachtwoord">
+      </mat-form-field>
+      <button mat-raised-button
+              color="primary"
+              type="submit">
+        <mat-icon fontIcon="fa-sign-in-alt"></mat-icon>
+        <span>Log in</span>
+      </button>
+    </form>
   </div>
+  <div *ngIf="(gebruiker$ | async).ingelogd">
+    Welkom terug, {{(gebruiker$ | async).gebruikersnaam}}
+    <br/>
+    <a routerLink="/mijngroepen"
+       routerLinkActive="active">Mijn groepen</a>
+  </div>
+</div>
