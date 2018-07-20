@@ -5,9 +5,11 @@ import { InloggenComponent } from './inloggen/inloggen.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { VolloMaterialModule } from '../vollo-material.module';
-import { FlexLayoutModule } from '../../../node_modules/@angular/flex-layout';
-import { RouterModule } from '../../../node_modules/@angular/router';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { RouterModule } from '@angular/router';
 import { MijnGroepenService } from './mijn-groepen/mijn-groepen.service';
+import { AgGridModule } from 'ag-grid-angular';
+import { PaginaTitelComponent } from './pagina-titel/pagina-titel.component';
 
 @NgModule({
   imports: [
@@ -16,10 +18,11 @@ import { MijnGroepenService } from './mijn-groepen/mijn-groepen.service';
     FormsModule,
     FlexLayoutModule,
     HttpClientModule,
-    VolloMaterialModule
+    VolloMaterialModule,
+    AgGridModule.withComponents([])
   ],
-  declarations: [MijnGroepenComponent, InloggenComponent],
-  exports: [MijnGroepenComponent, InloggenComponent],
+  declarations: [MijnGroepenComponent, InloggenComponent, PaginaTitelComponent],
+  exports: [MijnGroepenComponent, InloggenComponent, PaginaTitelComponent],
   providers: [MijnGroepenService]
 })
 export class VolloKernModule {}

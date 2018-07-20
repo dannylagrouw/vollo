@@ -8,13 +8,23 @@ export interface GebruikerState {
   gebruikersnaam: string;
 }
 
+export interface UiState {
+  paginaTitel: string;
+}
+
 export interface VolloStateModel {
   gebruiker: GebruikerState;
+  uiState: UiState;
 }
 
 export class InloggenAction {
-  static readonly type = '[Vollo] Inloggen';
+  static readonly type = '[vollo.gebruiker] Inloggen';
   constructor(public gebruikersnaam: string, public wachtwoord: string) {}
+}
+
+export class ToonPaginaAction {
+  static readonly type = '[vollo.ui] ToonPagina';
+  constructor(public paginaTitel: string) {}
 }
 
 @State<VolloStateModel>({
@@ -23,6 +33,9 @@ export class InloggenAction {
     gebruiker: {
       ingelogd: false,
       gebruikersnaam: null
+    },
+    uiState: {
+      paginaTitel: undefined
     }
   }
 })
@@ -43,5 +56,17 @@ export class VolloState {
         });
       })
     );
+  }
+
+  @Action(ToonPaginaAction)
+  toonPagina(ctx: StateContext<VolloStateModel>, action: ToonPaginaAction) {
+    const state = ctx.getState();
+    ctx.patchState({
+      uiState: {
+        ...state.uiState,
+        paginaTitel: action.paginaTitel
+      }
+    });
+    console.info('new state', ctx.getState());
   }
 }

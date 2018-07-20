@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MijnGroepenService } from './mijn-groepen.service';
-import { School } from './groep.model';
-import { map } from 'rxjs/operators';
+import { AgGridNg2 } from 'ag-grid-angular';
 
 @Component({
   selector: 'vollo-mijn-groepen',
@@ -9,12 +8,17 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./mijn-groepen.component.scss']
 })
 export class MijnGroepenComponent implements OnInit {
+  @ViewChild('agGrid') agGrid: AgGridNg2;
+
+  columnDefs = [
+    { headerName: 'School', field: 'school.naam' },
+    { headerName: 'Groep', field: 'naam' }
+  ];
+  rowData: any;
+
   constructor(private mijnGroepenService: MijnGroepenService) {}
 
   ngOnInit() {
-    this.mijnGroepenService
-      .ophalen()
-      .pipe(map((scholen: School[]) => scholen.map(school => school.naam)))
-      .subscribe(data => console.debug('mijn groepen', data));
+    this.rowData = this.mijnGroepenService.ophalen();
   }
 }

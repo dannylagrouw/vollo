@@ -1,3 +1,6 @@
-<p>
-  mijn-groepen works!
-</p>
+<vollo-pagina-titel titel="Mijn groepen"></vollo-pagina-titel>
+<ag-grid-angular #agGrid
+                 class="ag-theme-material"
+                 [rowData]="rowData | async"
+                 [columnDefs]="columnDefs">
+</ag-grid-angular>

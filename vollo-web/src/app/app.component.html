@@ -11,7 +11,7 @@
         <mat-icon fontIcon="fa-bars"></mat-icon>
       </button>
       <span class="logo"><a routerLink="/">Vollo</a></span>
-      <span class="toolbar-space"></span>
+      <span class="toolbar-space"><h1 class="mat-h1" [innerHTML]="paginaTitel$ | async"></h1></span>
       <span class="toolbar-right">
         <mat-menu #userMenu="matMenu">
           <button mat-menu-item>
@@ -28,9 +28,7 @@
         </button>  
       </span>
     </mat-toolbar>
-    <div class="content"
-         fxLayout="row"
-         fxLayoutAlign="center">
+    <div class="content mat-typography">
       <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>

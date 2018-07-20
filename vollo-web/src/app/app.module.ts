@@ -14,6 +14,7 @@ import { MatIconModule, MatIconRegistry } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule, Routes } from '@angular/router';
 import { MijnGroepenComponent } from './vollo-kern/mijn-groepen/mijn-groepen.component';
+import { AgGridModule } from 'ag-grid-angular';
 
 const appRoutes: Routes = [
   { path: 'inloggen', component: InloggenComponent },
@@ -35,10 +36,11 @@ const appRoutes: Routes = [
       { enableTracing: true } // <-- debugging purposes only
     ),
     MatIconModule,
+    FlexLayoutModule,
+    AgGridModule.withComponents([]),
     VolloMaterialModule,
     VolloKernModule,
-    NgxsModule.forRoot([VolloState]),
-    FlexLayoutModule
+    NgxsModule.forRoot([VolloState])
   ],
   providers: [MatIconRegistry, InloggenService],
   bootstrap: [AppComponent]
