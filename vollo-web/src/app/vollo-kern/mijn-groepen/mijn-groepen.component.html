@@ -1,6 +1,7 @@
 <vollo-pagina-titel titel="Mijn groepen"></vollo-pagina-titel>
 <ag-grid-angular #agGrid
                  class="ag-theme-material"
+                 [gridOptions]="gridOptions"
                  [rowData]="rowData | async"
                  [columnDefs]="columnDefs">
 </ag-grid-angular>
