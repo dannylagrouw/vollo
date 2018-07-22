@@ -2,8 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { GroepService } from './groep.service';
 import { AgGridNg2 } from 'ag-grid-angular';
 import { GridOptions, RowClickedEvent, ColDef } from 'ag-grid';
-import { Router, ActivatedRoute } from '../../../../node_modules/@angular/router';
-import { ValueFormatterParams } from '../../../../node_modules/ag-grid/dist/lib/entities/colDef';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'vollo-groep',
