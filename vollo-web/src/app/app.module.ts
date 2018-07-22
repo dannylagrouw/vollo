@@ -15,10 +15,12 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule, Routes } from '@angular/router';
 import { MijnGroepenComponent } from './vollo-kern/mijn-groepen/mijn-groepen.component';
 import { AgGridModule } from 'ag-grid-angular';
+import { GroepComponent } from './vollo-kern/groep/groep.component';
 
 const appRoutes: Routes = [
   { path: 'inloggen', component: InloggenComponent },
   { path: 'mijn-groepen', component: MijnGroepenComponent },
+  { path: 'groep/:groepId', component: GroepComponent },
   {
     path: '',
     redirectTo: '/inloggen',

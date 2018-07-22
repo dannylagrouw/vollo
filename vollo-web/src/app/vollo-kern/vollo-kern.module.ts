@@ -10,6 +10,8 @@ import { RouterModule } from '@angular/router';
 import { MijnGroepenService } from './mijn-groepen/mijn-groepen.service';
 import { AgGridModule } from 'ag-grid-angular';
 import { PaginaTitelComponent } from './pagina-titel/pagina-titel.component';
+import { GroepComponent } from './groep/groep.component';
+import { GroepService } from './groep/groep.service';
 
 @NgModule({
   imports: [
@@ -21,8 +23,8 @@ import { PaginaTitelComponent } from './pagina-titel/pagina-titel.component';
     VolloMaterialModule,
     AgGridModule.withComponents([])
   ],
-  declarations: [MijnGroepenComponent, InloggenComponent, PaginaTitelComponent],
-  exports: [MijnGroepenComponent, InloggenComponent, PaginaTitelComponent],
-  providers: [MijnGroepenService]
+  declarations: [MijnGroepenComponent, InloggenComponent, PaginaTitelComponent, GroepComponent],
+  exports: [MijnGroepenComponent, InloggenComponent, PaginaTitelComponent, GroepComponent],
+  providers: [MijnGroepenService, GroepService]
 })
 export class VolloKernModule {}

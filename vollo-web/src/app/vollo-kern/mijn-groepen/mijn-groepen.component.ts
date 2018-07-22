@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MijnGroepenService } from './mijn-groepen.service';
 import { AgGridNg2 } from 'ag-grid-angular';
 import { GridOptions, RowClickedEvent, ColDef } from 'ag-grid';
+import { Router } from '../../../../node_modules/@angular/router';
 
 @Component({
   selector: 'vollo-mijn-groepen',
@@ -16,7 +17,7 @@ export class MijnGroepenComponent implements OnInit {
     enableSorting: true,
     enableFilter: true,
     onRowClicked: (event: RowClickedEvent) => {
-      console.log('groep id', event.data.id);
+      this.router.navigate(['groep', event.data.id]);
     }
   };
   columnDefs = <ColDef[]>[
@@ -26,7 +27,7 @@ export class MijnGroepenComponent implements OnInit {
   ];
   rowData: any;
 
-  constructor(private mijnGroepenService: MijnGroepenService) {}
+  constructor(private mijnGroepenService: MijnGroepenService, private router: Router) {}
 
   ngOnInit() {
     this.rowData = this.mijnGroepenService.ophalen();
