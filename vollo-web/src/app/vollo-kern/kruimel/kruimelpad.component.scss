@@ -1,0 +1,31 @@
+.kruimelpad {
+  display: inline-block;
+  margin-right: 3px;
+  .open {
+    display: none;
+    margin-right: 10px;
+  }
+  .gesloten {
+    margin-right: 10px;
+  }
+  a {
+    font-size: 14px;
+    text-decoration: none;
+  }
+  .indicator {
+    color: #1b5e20;
+    margin: 0 10px;
+  }
+  &:hover {
+    .open {
+      display: inline-block;
+    }
+    .gesloten {
+      display: none;
+    }
+  }
+}
+
+h1 {
+  display: inline-block;
+}

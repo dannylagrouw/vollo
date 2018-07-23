@@ -18,13 +18,18 @@ import { AgGridModule } from 'ag-grid-angular';
 import { GroepComponent } from './vollo-kern/groep/groep.component';
 
 const appRoutes: Routes = [
-  { path: 'inloggen', component: InloggenComponent },
-  { path: 'mijn-groepen', component: MijnGroepenComponent },
-  { path: 'groep/:groepId', component: GroepComponent },
+  { path: 'inloggen', component: InloggenComponent, data: { titel: 'Inloggen' } },
+  { path: 'mijn-groepen', component: MijnGroepenComponent, data: { titel: 'Mijn groepen' } },
+  {
+    path: 'mijn-groepen/groep/:groepId',
+    component: GroepComponent,
+    data: { kruimels: ['mijn-groepen'], titel: 'Groep' }
+  },
   {
     path: '',
     redirectTo: '/inloggen',
-    pathMatch: 'full'
+    pathMatch: 'full',
+    data: { titel: 'Start' }
   }
 ];
 
@@ -35,7 +40,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
+      { enableTracing: false } // <-- debugging purposes only
     ),
     MatIconModule,
     FlexLayoutModule,

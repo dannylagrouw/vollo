@@ -17,7 +17,7 @@ export class MijnGroepenComponent implements OnInit {
     enableSorting: true,
     enableFilter: true,
     onRowClicked: (event: RowClickedEvent) => {
-      this.router.navigate(['groep', event.data.id]);
+      this.router.navigate(['mijn-groepen', 'groep', event.data.id]);
     }
   };
   columnDefs = <ColDef[]>[

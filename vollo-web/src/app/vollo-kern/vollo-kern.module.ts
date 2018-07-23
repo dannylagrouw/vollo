@@ -12,6 +12,8 @@ import { AgGridModule } from 'ag-grid-angular';
 import { PaginaTitelComponent } from './pagina-titel/pagina-titel.component';
 import { GroepComponent } from './groep/groep.component';
 import { GroepService } from './groep/groep.service';
+import { KruimelService } from './kruimel/kruimel.service';
+import { KruimelpadComponent } from './kruimel/kruimelpad.component';
 
 @NgModule({
   imports: [
@@ -23,8 +25,20 @@ import { GroepService } from './groep/groep.service';
     VolloMaterialModule,
     AgGridModule.withComponents([])
   ],
-  declarations: [MijnGroepenComponent, InloggenComponent, PaginaTitelComponent, GroepComponent],
-  exports: [MijnGroepenComponent, InloggenComponent, PaginaTitelComponent, GroepComponent],
-  providers: [MijnGroepenService, GroepService]
+  declarations: [
+    MijnGroepenComponent,
+    InloggenComponent,
+    PaginaTitelComponent,
+    GroepComponent,
+    KruimelpadComponent
+  ],
+  exports: [
+    MijnGroepenComponent,
+    InloggenComponent,
+    PaginaTitelComponent,
+    GroepComponent,
+    KruimelpadComponent
+  ],
+  providers: [MijnGroepenService, GroepService, KruimelService]
 })
 export class VolloKernModule {}

@@ -1,0 +1,10 @@
+<nav class="kruimelpad">
+  <span class="gesloten">&gt;</span>
+  <span class="open" *ngFor="let kruimel of kruimels$ | async">
+    <a mat-button [routerLink]="[kruimel.path]">
+      {{ kruimel.data.titel }}
+    </a>
+    <span class="indicator">&gt;</span>
+  </span>
+</nav>
+<h1 class="mat-h1" [innerHTML]="paginaTitel$ | async"></h1>

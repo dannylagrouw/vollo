@@ -2,7 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { GroepService } from './groep.service';
 import { AgGridNg2 } from 'ag-grid-angular';
 import { GridOptions, RowClickedEvent, ColDef } from 'ag-grid';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'vollo-groep',
@@ -44,8 +45,8 @@ export class GroepComponent implements OnInit {
   constructor(private groepService: GroepService, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.route.params.subscribe(
-      params => (this.rowData = this.groepService.ophalen(params.groepId))
-    );
+    this.route.paramMap
+      .pipe(switchMap((params: ParamMap) => params.get('groepId')))
+      .subscribe(groepId => (this.rowData = this.groepService.ophalen(groepId)));
   }
 }
