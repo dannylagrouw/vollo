@@ -7,4 +7,5 @@ export class Leerling extends DomeinObject {
   achternaam: string;
   geboortedatum: Date;
   geslacht: 'MAN' | 'VROUW' | 'OVERIG';
+  scores: (string | number)[];
 }
