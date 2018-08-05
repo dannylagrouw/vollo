@@ -5,6 +5,7 @@ import { GridOptions, RowClickedEvent, ColDef } from 'ag-grid';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap, map, tap } from 'rxjs/operators';
 import { Groep } from './groep.model';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'vollo-groep',
@@ -24,9 +25,9 @@ export class GroepComponent implements OnInit {
   };
   leerlingColDefs = <ColDef[]>[
     { headerName: 'ID', field: 'id', hide: true },
-    { headerName: 'Roepnaam', field: 'roepnaam', width: 100 },
+    { headerName: 'Roepnaam', field: 'roepnaam', width: 200 },
     { headerName: 'Tussenvoegsel', field: 'tussenvoegsel', width: 100 },
-    { headerName: 'Achternaam', field: 'achternaam', width: 200 },
+    { headerName: 'Achternaam', field: 'achternaam', width: 300 },
     {
       headerName: 'Geslacht',
       field: 'geslacht',
@@ -47,10 +48,9 @@ export class GroepComponent implements OnInit {
   constructor(private groepService: GroepService, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.rowData = this.route.paramMap.pipe(
-      switchMap((params: ParamMap) => params.get('groepId')),
-      switchMap(groepId =>
-        this.groepService.ophalen(groepId).pipe(
+    this.route.paramMap.pipe(switchMap((params: ParamMap) => of(params.get('groepId')))).subscribe(
+      groepId =>
+        (this.rowData = this.groepService.ophalen(groepId).pipe(
           tap((groep: Groep) => {
             this.columnDefs = [
               ...this.leerlingColDefs,
@@ -65,8 +65,7 @@ export class GroepComponent implements OnInit {
             ];
           }),
           map((groep: Groep) => groep.leerlingen)
-        )
-      )
+        ))
     );
   }
 }
