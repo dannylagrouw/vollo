@@ -54,11 +54,11 @@ export class GroepComponent implements OnInit {
           tap((groep: Groep) => {
             this.columnDefs = [
               ...this.leerlingColDefs,
-              ...groep.toetsen.map(toets => {
+              ...groep.toetsen.map(toetsafname => {
                 return <ColDef>{
-                  headerName: toets.omschrijving,
-                  headerTooltip: `${toets.soort} ${toets.datum}`,
-                  field: 'scores.' + toets.id,
+                  headerName: toetsafname.toets.omschrijving,
+                  headerTooltip: `${toetsafname.toets.soort} ${toetsafname.datum}`,
+                  field: 'scores.' + toetsafname.id,
                   width: 100
                 };
               })
