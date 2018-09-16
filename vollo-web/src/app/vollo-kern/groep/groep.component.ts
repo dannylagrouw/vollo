@@ -24,13 +24,13 @@ export class GroepComponent implements OnInit {
     }
   };
   leerlingColDefs = <ColDef[]>[
-    { headerName: 'ID', field: 'id', hide: true },
-    { headerName: 'Roepnaam', field: 'roepnaam', width: 200 },
-    { headerName: 'Tussenvoegsel', field: 'tussenvoegsel', width: 100 },
-    { headerName: 'Achternaam', field: 'achternaam', width: 300 },
+    { headerName: 'ID', field: 'leerling.id', hide: true },
+    { headerName: 'Roepnaam', field: 'leerling.roepnaam', width: 200 },
+    { headerName: 'Tussenvoegsel', field: 'leerling.tussenvoegsel', width: 100 },
+    { headerName: 'Achternaam', field: 'leerling.achternaam', width: 300 },
     {
       headerName: 'Geslacht',
-      field: 'geslacht',
+      field: 'leerling.geslacht',
       width: 100,
       valueFormatter: () => '',
       cellClass: params =>
