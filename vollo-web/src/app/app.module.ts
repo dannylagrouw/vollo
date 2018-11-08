@@ -3,10 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { VolloKernModule } from './vollo-kern/vollo-kern.module';
-import { NgxsModule } from '@ngxs/store';
-import { VolloState } from './state/vollo.state';
+import { StoreModule } from '@ngrx/store';
 import { InloggenService } from './service/inloggen.service';
-import { FormsModule } from '@angular/forms';
 import { InloggenComponent } from './vollo-kern/inloggen/inloggen.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { VolloMaterialModule } from './vollo-material.module';
@@ -16,6 +14,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { MijnGroepenComponent } from './vollo-kern/mijn-groepen/mijn-groepen.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { GroepComponent } from './vollo-kern/groep/groep.component';
+import { InloggenEffects, inloggenReducer } from './vollo-kern/inloggen/inloggen.state';
+import { uiReducer } from './vollo-kern/ui.state';
+import { EffectsModule } from '@ngrx/effects';
 
 const appRoutes: Routes = [
   { path: 'inloggen', component: InloggenComponent, data: { titel: 'Inloggen' } },
@@ -47,7 +48,8 @@ const appRoutes: Routes = [
     AgGridModule.withComponents([]),
     VolloMaterialModule,
     VolloKernModule,
-    NgxsModule.forRoot([VolloState])
+    StoreModule.forRoot({ inloggen: inloggenReducer, ui: uiReducer }),
+    EffectsModule.forRoot([InloggenEffects])
   ],
   providers: [MatIconRegistry, InloggenService],
   bootstrap: [AppComponent]

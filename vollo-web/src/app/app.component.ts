@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { Select } from '@ngxs/store';
-import { Observable } from 'rxjs';
-import { GebruikerState } from './state/vollo.state';
+import { InloggenService } from './service/inloggen.service';
 
 @Component({
   selector: 'vollo-root',
@@ -10,6 +8,7 @@ import { GebruikerState } from './state/vollo.state';
 })
 export class AppComponent {
   title = 'vollo';
-  @Select(state => state.vollo.gebruiker)
-  gebruiker$: Observable<GebruikerState>;
+  gebruiker$ = this.inloggenService.inloggenState$;
+
+  constructor(private inloggenService: InloggenService) {}
 }
