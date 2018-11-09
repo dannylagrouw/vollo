@@ -4,6 +4,7 @@ import { StoreModule } from '@ngrx/store';
 import { uiReducer } from './reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { UiStoreEffects } from './effects';
+import { UiStoreService } from './service';
 
 @NgModule({
   declarations: [],
@@ -11,6 +12,7 @@ import { UiStoreEffects } from './effects';
     CommonModule,
     StoreModule.forFeature('ui', uiReducer),
     EffectsModule.forFeature([UiStoreEffects])
-  ]
+  ],
+  providers: [UiStoreService]
 })
 export class UiStoreModule {}

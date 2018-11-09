@@ -18,14 +18,14 @@
         <mat-menu #userMenu="matMenu">
           <button mat-menu-item>
             <mat-icon fontSet="far" fontIcon="fa-user"></mat-icon>
-            Ingelogd als {{(gebruiker$ | async).gebruikersnaam}}
+            Ingelogd als {{(authenticatie$ | async).gebruikersnaam}}
           </button>
           <button mat-menu-item>
               <mat-icon fontIcon="fa-sign-out-alt"></mat-icon>
               Uitloggen
           </button>
         </mat-menu>
-        <button mat-icon-button [disabled]="!(gebruiker$ | async).ingelogd" [matMenuTriggerFor]="userMenu">
+        <button mat-icon-button [disabled]="!(authenticatie$ | async).ingelogd" [matMenuTriggerFor]="userMenu">
           <mat-icon fontSet="far" fontIcon="fa-user"></mat-icon>
         </button>
       </span>
