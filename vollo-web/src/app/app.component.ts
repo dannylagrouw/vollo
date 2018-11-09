@@ -9,7 +9,7 @@ import { select, Store } from '@ngrx/store';
 })
 export class AppComponent {
   title = 'vollo';
-  gebruiker$ = this.store.pipe(select(AuthenticatieStoreSelectors.selectAuthenticatieState));
+  authenticatie$ = this.store.pipe(select(AuthenticatieStoreSelectors.selectAuthenticatieState));
 
   constructor(private store: Store<VolloKernState.State>) {}
 }

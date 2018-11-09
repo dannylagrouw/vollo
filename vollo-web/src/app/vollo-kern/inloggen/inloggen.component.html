@@ -1,6 +1,6 @@
 <vollo-pagina-titel titel="Inloggen"></vollo-pagina-titel>
 <div fxFlex="1 1 400px">
-  <div *ngIf="!(gebruiker$ | async).ingelogd">
+  <div *ngIf="!(authenticatie$ | async).ingelogd">
     <form #inloggenForm="ngForm"
           (ngSubmit)="inloggen()">
       <mat-form-field>
@@ -23,8 +23,8 @@
       </button>
     </form>
   </div>
-  <div *ngIf="(gebruiker$ | async).ingelogd">
-    Welkom terug, {{(gebruiker$ | async).gebruikersnaam}}
+  <div *ngIf="(authenticatie$ | async).ingelogd">
+    Welkom terug, {{(authenticatie$ | async).gebruikersnaam}}
     <br/>
     <a routerLink="/mijn-groepen"
        routerLinkActive="active">Mijn groepen</a>

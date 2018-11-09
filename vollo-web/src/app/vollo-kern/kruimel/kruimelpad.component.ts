@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { ActivationEnd, Router } from '@angular/router';
 import { distinctUntilChanged, filter, map, tap } from 'rxjs/operators';
 import { KruimelService } from './kruimel.service';
-import { select, Store } from '@ngrx/store';
-import { VolloKernState, UiStoreSelectors } from '../vollo-kern-store';
+import { UiStoreService } from '../vollo-kern-store';
 
 @Component({
   selector: 'vollo-kruimelpad',
@@ -11,7 +10,7 @@ import { VolloKernState, UiStoreSelectors } from '../vollo-kern-store';
   styleUrls: ['kruimelpad.component.scss']
 })
 export class KruimelpadComponent {
-  paginatitel$ = this.store.pipe(select(UiStoreSelectors.selectPaginatitel));
+  paginatitel$ = this.uiStoreService.paginatitel$;
 
   kruimels$ = this.router.events.pipe(
     filter(event => event instanceof ActivationEnd),
@@ -25,6 +24,6 @@ export class KruimelpadComponent {
   constructor(
     private router: Router,
     private kruimelService: KruimelService,
-    private store: Store<VolloKernState.State>
+    private uiStoreService: UiStoreService
   ) {}
 }

@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  AuthenticatieStoreSelectors,
-  AuthenticatieStoreActions,
-  VolloKernState
-} from '../vollo-kern-store';
-import { select, Store } from '@ngrx/store';
+import { AuthenticatieStoreService } from '../vollo-kern-store';
 
 @Component({
   selector: 'vollo-inloggen',
@@ -12,20 +7,18 @@ import { select, Store } from '@ngrx/store';
   styleUrls: ['./inloggen.component.scss']
 })
 export class InloggenComponent implements OnInit {
-  gebruiker$ = this.store.pipe(select(AuthenticatieStoreSelectors.selectAuthenticatieState));
+  authenticatie$ = this.authenticatieStoreService.authenticatie$;
 
   form = {
     gebruikersnaam: '',
     wachtwoord: ''
   };
 
-  constructor(private store: Store<VolloKernState.State>) {}
+  constructor(private authenticatieStoreService: AuthenticatieStoreService) {}
 
   ngOnInit() {}
 
   inloggen() {
-    this.store.dispatch(
-      new AuthenticatieStoreActions.InloggenAction(this.form.gebruikersnaam, this.form.wachtwoord)
-    );
+    this.authenticatieStoreService.inloggen(this.form.gebruikersnaam, this.form.wachtwoord);
   }
 }
