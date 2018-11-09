@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { ToonPaginaAction, UiState } from '../ui.state';
 import { Store } from '@ngrx/store';
+import { UiStoreActions, VolloKernState } from '../vollo-kern-store';
 
 @Component({
   selector: 'vollo-pagina-titel',
@@ -9,8 +9,8 @@ import { Store } from '@ngrx/store';
 export class PaginaTitelComponent {
   @Input()
   set titel(value: string) {
-    this.store.dispatch(new ToonPaginaAction(value));
+    this.store.dispatch(new UiStoreActions.ToonPaginaAction(value));
   }
 
-  constructor(private store: Store<UiState>) {}
+  constructor(private store: Store<VolloKernState.State>) {}
 }

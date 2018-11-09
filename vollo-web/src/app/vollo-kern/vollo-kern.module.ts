@@ -14,6 +14,8 @@ import { GroepComponent } from './groep/groep.component';
 import { GroepService } from './groep/groep.service';
 import { KruimelService } from './kruimel/kruimel.service';
 import { KruimelpadComponent } from './kruimel/kruimelpad.component';
+import { LeerlingComponent } from './leerling/leerling.component';
+import { VolloKernStoreModule } from './vollo-kern-store';
 
 @NgModule({
   imports: [
@@ -23,14 +25,16 @@ import { KruimelpadComponent } from './kruimel/kruimelpad.component';
     FlexLayoutModule,
     HttpClientModule,
     VolloMaterialModule,
-    AgGridModule.withComponents([])
+    AgGridModule.withComponents([]),
+    VolloKernStoreModule
   ],
   declarations: [
     MijnGroepenComponent,
     InloggenComponent,
     PaginaTitelComponent,
     GroepComponent,
-    KruimelpadComponent
+    KruimelpadComponent,
+    LeerlingComponent
   ],
   exports: [
     MijnGroepenComponent,

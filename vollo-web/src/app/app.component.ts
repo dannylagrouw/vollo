@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { InloggenService } from './service/inloggen.service';
+import { AuthenticatieStoreSelectors, VolloKernState } from './vollo-kern/vollo-kern-store';
+import { select, Store } from '@ngrx/store';
 
 @Component({
   selector: 'vollo-root',
@@ -8,7 +9,7 @@ import { InloggenService } from './service/inloggen.service';
 })
 export class AppComponent {
   title = 'vollo';
-  gebruiker$ = this.inloggenService.inloggenState$;
+  gebruiker$ = this.store.pipe(select(AuthenticatieStoreSelectors.selectAuthenticatieState));
 
-  constructor(private inloggenService: InloggenService) {}
+  constructor(private store: Store<VolloKernState.State>) {}
 }
