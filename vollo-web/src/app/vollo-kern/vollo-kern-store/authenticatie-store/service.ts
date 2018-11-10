@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { select, Store } from '@ngrx/store';
 import { VolloKernState } from '..';
 import * as authenticatieActions from './actions';
