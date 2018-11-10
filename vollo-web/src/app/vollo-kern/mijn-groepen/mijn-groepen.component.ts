@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MijnGroepenService } from './mijn-groepen.service';
 import { AgGridNg2 } from 'ag-grid-angular';
 import { GridOptions, RowClickedEvent, ColDef } from 'ag-grid';
-import { Router } from '../../../../node_modules/@angular/router';
+import { Router } from '@angular/router';
+import { MijnGroepenStoreService } from '../vollo-kern-store';
 
 @Component({
   selector: 'vollo-mijn-groepen',
@@ -27,9 +27,10 @@ export class MijnGroepenComponent implements OnInit {
   ];
   rowData: any;
 
-  constructor(private mijnGroepenService: MijnGroepenService, private router: Router) {}
+  constructor(private mijnGroepenStoreService: MijnGroepenStoreService, private router: Router) {}
 
   ngOnInit() {
-    this.rowData = this.mijnGroepenService.ophalen();
+    this.rowData = this.mijnGroepenStoreService.groepen$;
+    this.mijnGroepenStoreService.ophalen();
   }
 }
