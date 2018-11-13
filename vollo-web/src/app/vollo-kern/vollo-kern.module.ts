@@ -10,7 +10,6 @@ import { RouterModule } from '@angular/router';
 import { AgGridModule } from 'ag-grid-angular';
 import { PaginaTitelComponent } from './pagina-titel/pagina-titel.component';
 import { GroepComponent } from './groep/groep.component';
-import { GroepService } from './groep/groep.service';
 import { KruimelService } from './kruimel/kruimel.service';
 import { KruimelpadComponent } from './kruimel/kruimelpad.component';
 import { LeerlingComponent } from './leerling/leerling.component';
@@ -42,6 +41,6 @@ import { VolloKernStoreModule } from './vollo-kern-store';
     GroepComponent,
     KruimelpadComponent
   ],
-  providers: [GroepService, KruimelService]
+  providers: [KruimelService]
 })
 export class VolloKernModule {}
