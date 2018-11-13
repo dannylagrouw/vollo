@@ -5,6 +5,7 @@ import { UiStoreModule } from './ui-store';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { MijnGroepenStoreModule } from './mijn-groepen-store';
+import { GroepStoreModule } from './groep-store';
 
 @NgModule({
   declarations: [],
@@ -12,6 +13,7 @@ import { MijnGroepenStoreModule } from './mijn-groepen-store';
     CommonModule,
     AuthenticatieStoreModule,
     MijnGroepenStoreModule,
+    GroepStoreModule,
     UiStoreModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot([])

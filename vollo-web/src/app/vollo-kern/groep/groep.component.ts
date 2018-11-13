@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { GroepService } from './groep.service';
 import { AgGridNg2 } from 'ag-grid-angular';
 import { GridOptions, RowClickedEvent, ColDef } from 'ag-grid';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap, map, tap } from 'rxjs/operators';
 import { Groep } from './groep.model';
 import { of } from 'rxjs';
+import { GroepStoreService } from '../vollo-kern-store/groep-store';
 
 @Component({
   selector: 'vollo-groep',
@@ -45,14 +45,17 @@ export class GroepComponent implements OnInit {
   columnDefs = <ColDef[]>[];
   rowData: any;
 
-  constructor(private groepService: GroepService, private route: ActivatedRoute) {}
+  constructor(private groepStoreService: GroepStoreService, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.route.paramMap.pipe(switchMap((params: ParamMap) => of(params.get('groepId')))).subscribe(
-      groepId =>
-        (this.rowData = this.groepService.ophalen(groepId).pipe(
-          tap((groep: Groep) => {
-            this.columnDefs = [
+    this.route.paramMap
+      .pipe(switchMap((params: ParamMap) => of(params.get('groepId'))))
+      .subscribe(groepId => this.groepStoreService.ophalen(parseInt(groepId)));
+
+    this.rowData = this.groepStoreService.groep$.pipe(
+      tap((groep: Groep) => {
+        this.columnDefs = groep
+          ? [
               ...this.leerlingColDefs,
               ...groep.toetsen.map(toetsafname => {
                 return <ColDef>{
@@ -62,10 +65,10 @@ export class GroepComponent implements OnInit {
                   width: 100
                 };
               })
-            ];
-          }),
-          map((groep: Groep) => groep.leerlingen)
-        ))
+            ]
+          : [];
+      }),
+      map((groep: Groep) => (groep ? groep.leerlingen : []))
     );
   }
 }
