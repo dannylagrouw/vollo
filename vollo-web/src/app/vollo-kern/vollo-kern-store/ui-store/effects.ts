@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Actions } from '@ngrx/effects';
 
 @Injectable()
 export class UiStoreEffects {
-  constructor() {}
+  constructor(private actions$: Actions) {}
 }

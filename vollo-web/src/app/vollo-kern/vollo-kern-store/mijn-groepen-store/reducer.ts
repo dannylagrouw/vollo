@@ -1,5 +1,6 @@
 import { Actions, ActionTypes } from './actions';
 import { initialState, State } from './state';
+import { CommonActionTypes } from '../../common/fout-action.model';
 
 export function mijnGroepenReducer(state = initialState, action: Actions): State {
   switch (action.type) {
@@ -10,7 +11,7 @@ export function mijnGroepenReducer(state = initialState, action: Actions): State
         ...state,
         groepen: action.groepen
       };
-    case ActionTypes.OPHALEN_MISLUKT:
+    case CommonActionTypes.FOUT:
       return {
         ...state,
         groepen: []
