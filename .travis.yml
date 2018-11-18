@@ -1,0 +1,3 @@
+script:
+  - cd vollo-kern
+  - mvn clean install
