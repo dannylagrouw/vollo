@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { Select } from '@ngxs/store';
-import { Observable } from 'rxjs';
-import { GebruikerState } from './state/vollo.state';
+import { AuthenticatieStoreService, UiStoreService } from './vollo-kern/vollo-kern-store';
 
 @Component({
   selector: 'vollo-root',
@@ -10,6 +8,14 @@ import { GebruikerState } from './state/vollo.state';
 })
 export class AppComponent {
   title = 'vollo';
-  @Select(state => state.vollo.gebruiker)
-  gebruiker$: Observable<GebruikerState>;
+  authenticatie$ = this.authenticatieStoreService.authenticatie$;
+  foutmeldingen$ = this.uiStoreService.foutmeldingen$;
+
+  constructor(
+    private authenticatieStoreService: AuthenticatieStoreService,
+    private uiStoreService: UiStoreService
+  ) {
+    this.foutmeldingen$.subscribe(m => console.info(m));
+    uiStoreService.toonFoutmelding('test', 'Dit is een foutmelding');
+  }
 }
