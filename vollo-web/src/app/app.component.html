@@ -15,6 +15,14 @@
         <vollo-kruimelpad></vollo-kruimelpad>
       </span>
       <span class="toolbar-right">
+        <mat-menu #foutmeldingen="matMenu">
+          <button mat-menu-item *ngFor="let m of foutmeldingen$ | async">
+            {{m.aanleiding}} - {{m.foutmelding}}
+          </button>
+        </mat-menu>
+        <button mat-icon-button [matMenuTriggerFor]="foutmeldingen">
+          <mat-icon fontSet="fas" fontIcon="fa-exclamation-warning"></mat-icon>
+        </button>
         <mat-menu #userMenu="matMenu">
           <button mat-menu-item>
             <mat-icon fontSet="far" fontIcon="fa-user"></mat-icon>
