@@ -3,6 +3,10 @@
                mode="side">
     Sidenav content
   </mat-sidenav>
+  <mat-sidenav #sidenavRight [opened]="toonLeerlingPaneel$ | async"
+               mode="side" position="end">
+    <vollo-leerling></vollo-leerling>
+  </mat-sidenav>
 
   <mat-sidenav-content>
     <mat-toolbar color="primary">

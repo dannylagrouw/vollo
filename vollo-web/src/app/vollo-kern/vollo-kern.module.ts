@@ -39,7 +39,8 @@ import { VolloKernStoreModule } from './vollo-kern-store';
     InloggenComponent,
     PaginaTitelComponent,
     GroepComponent,
-    KruimelpadComponent
+    KruimelpadComponent,
+    LeerlingComponent
   ],
   providers: [KruimelService]
 })

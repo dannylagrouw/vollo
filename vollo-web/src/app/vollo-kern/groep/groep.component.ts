@@ -6,6 +6,7 @@ import { switchMap, map, tap } from 'rxjs/operators';
 import { Groep } from './groep.model';
 import { of } from 'rxjs';
 import { GroepStoreService } from '../vollo-kern-store/groep-store';
+import { LeerlingStoreService } from '../vollo-kern-store/leerling-store';
 
 @Component({
   selector: 'vollo-groep',
@@ -20,7 +21,7 @@ export class GroepComponent implements OnInit {
     enableSorting: true,
     enableFilter: true,
     onRowClicked: (event: RowClickedEvent) => {
-      console.log('leerling id', event.data.id);
+      this.leerlingStoreService.selecteren(event.data.leerling.id);
     }
   };
   leerlingColDefs = <ColDef[]>[
@@ -45,7 +46,11 @@ export class GroepComponent implements OnInit {
   columnDefs = <ColDef[]>[];
   rowData: any;
 
-  constructor(private groepStoreService: GroepStoreService, private route: ActivatedRoute) {}
+  constructor(
+    private groepStoreService: GroepStoreService,
+    private leerlingStoreService: LeerlingStoreService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     this.route.paramMap

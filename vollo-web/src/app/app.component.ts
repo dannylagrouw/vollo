@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { AuthenticatieStoreService, UiStoreService } from './vollo-kern/vollo-kern-store';
+import {
+  AuthenticatieStoreService,
+  LeerlingStoreService,
+  UiStoreService
+} from './vollo-kern/vollo-kern-store';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'vollo-root',
@@ -10,12 +15,13 @@ export class AppComponent {
   title = 'vollo';
   authenticatie$ = this.authenticatieStoreService.authenticatie$;
   foutmeldingen$ = this.uiStoreService.foutmeldingen$;
+  toonLeerlingPaneel$ = this.leerlingStoreService.geselecteerd$.pipe(map(id => !!id));
 
   constructor(
     private authenticatieStoreService: AuthenticatieStoreService,
-    private uiStoreService: UiStoreService
+    private uiStoreService: UiStoreService,
+    private leerlingStoreService: LeerlingStoreService
   ) {
-    this.foutmeldingen$.subscribe(m => console.info(m));
     uiStoreService.toonFoutmelding('test', 'Dit is een foutmelding');
   }
 }

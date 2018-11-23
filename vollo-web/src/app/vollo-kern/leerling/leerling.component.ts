@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LeerlingStoreService } from '../vollo-kern-store/leerling-store';
 
 @Component({
   selector: 'vollo-leerling',
@@ -6,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./leerling.component.scss']
 })
 export class LeerlingComponent implements OnInit {
-  constructor() {}
+  leerling$ = this.leerlingStoreService.leerling$;
+
+  constructor(private leerlingStoreService: LeerlingStoreService) {}
 
   ngOnInit() {}
 }
