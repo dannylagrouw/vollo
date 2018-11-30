@@ -8,6 +8,7 @@ import * as LeerlingStoreSelectors from './selectors';
 export class LeerlingStoreService {
   leerling$ = this.store.pipe(select(LeerlingStoreSelectors.selectLeerling));
   geselecteerd$ = this.store.pipe(select(LeerlingStoreSelectors.selectGeselecteerd));
+  scores$ = this.store.pipe(select(LeerlingStoreSelectors.selectScores));
 
   constructor(private store: Store<VolloKernState.State>) {}
 

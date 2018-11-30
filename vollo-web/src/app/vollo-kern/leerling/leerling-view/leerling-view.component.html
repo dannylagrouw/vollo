@@ -8,7 +8,8 @@
     </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <p>
+    <p *ngFor="let score of scores">
+      {{score.toetsafname.datum}}: {{score.letterScore || score.cijferScore}}
     </p>
   </mat-card-content>
   <mat-card-actions>

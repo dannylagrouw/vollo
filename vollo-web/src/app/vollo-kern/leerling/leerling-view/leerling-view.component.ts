@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Leerling } from '../../groep/leerling.model';
+import { Score } from '../../common/model/score.model';
 
 @Component({
   selector: 'vollo-leerling-view',
@@ -8,6 +9,8 @@ import { Leerling } from '../../groep/leerling.model';
 })
 export class LeerlingViewComponent {
   @Input() leerling: Leerling;
+
+  @Input() scores: Score[];
 
   constructor() {}
 }

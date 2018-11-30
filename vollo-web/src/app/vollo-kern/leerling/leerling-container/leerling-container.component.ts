@@ -8,6 +8,7 @@ import { LeerlingStoreService } from '../../vollo-kern-store/leerling-store';
 })
 export class LeerlingContainerComponent {
   leerling$ = this.leerlingStoreService.leerling$;
+  scores$ = this.leerlingStoreService.scores$;
 
   constructor(private leerlingStoreService: LeerlingStoreService) {}
 }

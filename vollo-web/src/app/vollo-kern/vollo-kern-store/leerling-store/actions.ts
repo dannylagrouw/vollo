@@ -1,11 +1,15 @@
 import { Action } from '@ngrx/store';
 import { Leerling } from '../../groep/leerling.model';
+import { Score } from '../../common/model/score.model';
 
 export enum ActionTypes {
   SELECTEREN = '[vollo.kern.leerling] Selecteren',
   OPHALEN = '[vollo.kern.leerling] Ophalen',
   OPHALEN_SUCCES = '[vollo.kern.leerling] Ophalen succes',
-  OPHALEN_MISLUKT = '[vollo.kern.leerling] Ophalen mislukt'
+  OPHALEN_MISLUKT = '[vollo.kern.leerling] Ophalen mislukt',
+  OPHALEN_SCORES = '[vollo.kern.leerling] Ophalen scores',
+  OPHALEN_SCORES_SUCCES = '[vollo.kern.leerling] Ophalen scores succes',
+  OPHALEN_SCORES_MISLUKT = '[vollo.kern.leerling] Ophalen scores mislukt'
 }
 
 export class SelecterenAction implements Action {
@@ -28,4 +32,26 @@ export class OphalenMisluktAction implements Action {
   constructor(public foutmelding: string) {}
 }
 
-export type Actions = SelecterenAction | OphalenAction | OphalenSuccesAction | OphalenMisluktAction;
+export class OphalenScoresAction implements Action {
+  readonly type = ActionTypes.OPHALEN_SCORES;
+  constructor(public leerlingId: number) {}
+}
+
+export class OphalenScoresSuccesAction implements Action {
+  readonly type = ActionTypes.OPHALEN_SCORES_SUCCES;
+  constructor(public scores: Score[]) {}
+}
+
+export class OphalenScoresMisluktAction implements Action {
+  readonly type = ActionTypes.OPHALEN_SCORES_MISLUKT;
+  constructor(public foutmelding: string) {}
+}
+
+export type Actions =
+  | SelecterenAction
+  | OphalenAction
+  | OphalenSuccesAction
+  | OphalenMisluktAction
+  | OphalenScoresAction
+  | OphalenScoresSuccesAction
+  | OphalenScoresMisluktAction;
