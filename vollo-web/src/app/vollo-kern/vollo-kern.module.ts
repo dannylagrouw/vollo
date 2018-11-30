@@ -14,6 +14,8 @@ import { KruimelService } from './kruimel/kruimel.service';
 import { KruimelpadComponent } from './kruimel/kruimelpad.component';
 import { LeerlingComponent } from './leerling/leerling.component';
 import { VolloKernStoreModule } from './vollo-kern-store';
+import { LeerlingContainerComponent } from './leerling/leerling-container/leerling-container.component';
+import { LeerlingViewComponent } from './leerling/leerling-view/leerling-view.component';
 
 @NgModule({
   imports: [
@@ -32,7 +34,9 @@ import { VolloKernStoreModule } from './vollo-kern-store';
     PaginaTitelComponent,
     GroepComponent,
     KruimelpadComponent,
-    LeerlingComponent
+    LeerlingComponent,
+    LeerlingContainerComponent,
+    LeerlingViewComponent
   ],
   exports: [
     MijnGroepenComponent,
@@ -40,7 +44,7 @@ import { VolloKernStoreModule } from './vollo-kern-store';
     PaginaTitelComponent,
     GroepComponent,
     KruimelpadComponent,
-    LeerlingComponent
+    LeerlingContainerComponent
   ],
   providers: [KruimelService]
 })
