@@ -8,22 +8,16 @@
 		<version>2.1.1.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>nl.vollo.testdata</groupId>
-	<artifactId>vollo-testdata</artifactId>
+	<groupId>nl.vollo.events</groupId>
+	<artifactId>vollo-events</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
-	<name>vollo-testdata</name>
+	<name>vollo-events</name>
 
 	<properties>
 		<java.version>1.8</java.version>
 		<kotlin.version>1.3.10</kotlin.version>
 	</properties>
-
 	<dependencies>
-        <dependency>
-            <groupId>nl.vollo.events</groupId>
-            <artifactId>vollo-events</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -67,10 +61,6 @@
 		<testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
 		<plugins>
 			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
 				<groupId>org.jetbrains.kotlin</groupId>
 				<artifactId>kotlin-maven-plugin</artifactId>
 				<configuration>
@@ -93,3 +83,4 @@
 	</build>
 
 </project>
+
