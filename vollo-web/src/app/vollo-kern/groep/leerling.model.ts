@@ -8,4 +8,12 @@ export class Leerling extends DomeinObject {
   geboortedatum: Date;
   geslacht: 'MAN' | 'VROUW' | 'OVERIG';
   scores: (string | number)[];
+  foto: string;
+}
+
+export function fromServer(leerling: Leerling) {
+  return {
+    ...leerling,
+    foto: 'data:image/png;charset=utf-8;base64,' + leerling.foto
+  };
 }

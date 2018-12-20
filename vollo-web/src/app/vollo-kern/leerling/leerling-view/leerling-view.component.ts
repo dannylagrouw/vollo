@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Leerling } from '../../groep/leerling.model';
 import { Score } from '../../common/model/score.model';
-import { AvatarService } from '../../common/avatar.service';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'vollo-leerling-view',
@@ -9,13 +9,13 @@ import { AvatarService } from '../../common/avatar.service';
   styleUrls: ['./leerling-view.component.scss']
 })
 export class LeerlingViewComponent {
-  avatarUrl: string;
+  fotoData: SafeResourceUrl;
 
   _leerling: Leerling;
   @Input()
   set leerling(value: Leerling) {
     this._leerling = value;
-    this.avatarUrl = value ? this.avatarService.generate(value.id, value.geslacht) : undefined;
+    this.fotoData = this.sanitizer.bypassSecurityTrustResourceUrl(value.foto);
   }
   get leerling() {
     return this._leerling;
@@ -23,5 +23,5 @@ export class LeerlingViewComponent {
 
   @Input() scores: Score[];
 
-  constructor(private avatarService: AvatarService) {}
+  constructor(private sanitizer: DomSanitizer) {}
 }
