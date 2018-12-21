@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivationEnd, Router } from '@angular/router';
-import { distinctUntilChanged, filter, map, tap } from 'rxjs/operators';
+import { distinctUntilChanged, filter, map } from 'rxjs/operators';
 import { KruimelService } from './kruimel.service';
 import { UiStoreService } from '../vollo-kern-store';
 
@@ -17,8 +17,7 @@ export class KruimelpadComponent {
     distinctUntilChanged(),
     map((event: ActivationEnd) =>
       this.kruimelService.maakKruimelpad(event.snapshot.root.firstChild.data, this.router)
-    ),
-    tap(k => console.info('kruimel', k))
+    )
   );
 
   constructor(
