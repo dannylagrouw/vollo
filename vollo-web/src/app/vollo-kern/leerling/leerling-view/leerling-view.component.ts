@@ -15,7 +15,11 @@ export class LeerlingViewComponent {
   @Input()
   set leerling(value: Leerling) {
     this._leerling = value;
-    this.fotoData = this.sanitizer.bypassSecurityTrustResourceUrl(value.foto);
+    if (value && value.foto) {
+      this.fotoData = this.sanitizer.bypassSecurityTrustResourceUrl(value.foto);
+    } else {
+      this.fotoData = undefined;
+    }
   }
   get leerling() {
     return this._leerling;

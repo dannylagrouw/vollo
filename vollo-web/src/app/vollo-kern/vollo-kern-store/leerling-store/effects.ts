@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
-import { Observable, of as observableOf } from 'rxjs';
-import { catchError, map, mergeMap, tap } from 'rxjs/operators';
+import { EMPTY, Observable, of as observableOf } from 'rxjs';
+import { catchError, delay, filter, map, mergeMap, tap } from 'rxjs/operators';
 import * as leerlingActions from './actions';
 import { HttpClient } from '@angular/common/http';
 import { fromServer, Leerling } from '../../groep/leerling.model';
@@ -30,6 +30,17 @@ export class LeerlingStoreEffects {
         map(leerling => new leerlingActions.OphalenSuccesAction(leerling)),
         catchError(error => observableOf(new leerlingActions.OphalenMisluktAction(error)))
       )
+    )
+  );
+
+  @Effect()
+  ophalenSucces$: Observable<Action> = this.actions$.pipe(
+    ofType(leerlingActions.ActionTypes.OPHALEN_SUCCES),
+    filter((action: leerlingActions.OphalenSuccesAction) => !action.leerling.foto),
+    delay(1000),
+    map(
+      (action: leerlingActions.OphalenSuccesAction) =>
+        new leerlingActions.OphalenAction(action.leerling.id)
     )
   );
 

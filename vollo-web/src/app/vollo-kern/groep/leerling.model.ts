@@ -14,6 +14,6 @@ export class Leerling extends DomeinObject {
 export function fromServer(leerling: Leerling) {
   return {
     ...leerling,
-    foto: 'data:image/png;charset=utf-8;base64,' + leerling.foto
+    foto: leerling.foto ? 'data:image/png;charset=utf-8;base64,' + leerling.foto : undefined
   };
 }
