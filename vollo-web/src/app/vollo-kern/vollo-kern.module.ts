@@ -16,6 +16,8 @@ import { LeerlingComponent } from './leerling/leerling.component';
 import { VolloKernStoreModule } from './vollo-kern-store';
 import { LeerlingContainerComponent } from './leerling/leerling-container/leerling-container.component';
 import { LeerlingViewComponent } from './leerling/leerling-view/leerling-view.component';
+import { PlotlyModule } from 'angular-plotly.js';
+import { ScoreGrafiekComponent } from './score/score-grafiek/score-grafiek.component';
 
 @NgModule({
   imports: [
@@ -26,7 +28,8 @@ import { LeerlingViewComponent } from './leerling/leerling-view/leerling-view.co
     HttpClientModule,
     VolloMaterialModule,
     AgGridModule.withComponents([]),
-    VolloKernStoreModule
+    VolloKernStoreModule,
+    PlotlyModule
   ],
   declarations: [
     MijnGroepenComponent,
@@ -36,7 +39,8 @@ import { LeerlingViewComponent } from './leerling/leerling-view/leerling-view.co
     KruimelpadComponent,
     LeerlingComponent,
     LeerlingContainerComponent,
-    LeerlingViewComponent
+    LeerlingViewComponent,
+    ScoreGrafiekComponent
   ],
   exports: [
     MijnGroepenComponent,

@@ -14,6 +14,7 @@ import { MijnGroepenComponent } from './vollo-kern/mijn-groepen/mijn-groepen.com
 import { AgGridModule } from 'ag-grid-angular';
 import { GroepComponent } from './vollo-kern/groep/groep.component';
 import { VolloKernStoreModule } from './vollo-kern/vollo-kern-store';
+import { PlotlyModule } from 'angular-plotly.js';
 
 const appRoutes: Routes = [
   { path: 'inloggen', component: InloggenComponent, data: { titel: 'Inloggen' } },
@@ -46,7 +47,8 @@ const appRoutes: Routes = [
     VolloMaterialModule,
     VolloKernModule,
     StoreModule.forRoot({}),
-    VolloKernStoreModule
+    VolloKernStoreModule,
+    PlotlyModule
   ],
   providers: [MatIconRegistry],
   bootstrap: [AppComponent]

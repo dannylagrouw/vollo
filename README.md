@@ -12,6 +12,10 @@ mvn spring-boot:run -Dspring-boot.run.arguments=--genereer-testdata
 - angular tests
 - web en backend als modules in 1 project
 - 401 -> naar loginpagina
+- charts
+- trends voor scores
+- notities
+- importeren
 - verplaats liquibase.properties naar subprojecten
 
 ### Kafka

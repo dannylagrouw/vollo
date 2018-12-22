@@ -12,6 +12,7 @@
     <p *ngFor="let score of scores">
       {{score.toetsafname.datum}}: {{score.letterScore || score.cijferScore}}
     </p>
+    <vollo-score-grafiek [scores]="scores"></vollo-score-grafiek>
   </mat-card-content>
   <mat-card-actions>
     <button mat-button>LIKE</button>

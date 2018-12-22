@@ -30,9 +30,12 @@
     "@ngrx/store": "^7.0.0-beta.0",
     "ag-grid": "^18.1.1",
     "ag-grid-angular": "^18.1.0",
+    "angular-plotly.js": "^0.1.15",
     "core-js": "^2.4.1",
     "moment": "^2.22.2",
     "normalize.css": "^8.0.0",
+    "plotly.js": "^1.43.1",
+    "plotly.js-locales": "^1.43.1",
     "rxjs": "^6.3.3",
     "xlsx": "^0.13.2",
     "zone.js": "^0.8.19"
