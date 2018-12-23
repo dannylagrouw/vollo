@@ -13,8 +13,10 @@ mvn spring-boot:run -Dspring-boot.run.arguments=--genereer-testdata
 - web en backend als modules in 1 project
 - 401 -> naar loginpagina
   x charts
-- trends voor scores - trends in backend berekenen en meesturen - minitrends op groeppagina - scores in tabel op leerlingpanel
+- trends voor scores - trends in backend berekenen en meesturen - minitrends op groeppagina
+  x scores in tabel op leerlingpanel
   x leerlingpanel kunnen sluiten
+- leerlingpanel: klik op naam: open schermvullend
 - notities
 - importeren
 - verplaats liquibase.properties naar subprojecten

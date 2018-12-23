@@ -18,6 +18,7 @@ import { LeerlingContainerComponent } from './leerling/leerling-container/leerli
 import { LeerlingViewComponent } from './leerling/leerling-view/leerling-view.component';
 import { PlotlyModule } from 'angular-plotly.js';
 import { ScoreGrafiekComponent } from './score/score-grafiek/score-grafiek.component';
+import { ScoreTabelComponent } from './score/score-tabel/score-tabel.component';
 
 @NgModule({
   imports: [
@@ -40,7 +41,8 @@ import { ScoreGrafiekComponent } from './score/score-grafiek/score-grafiek.compo
     LeerlingComponent,
     LeerlingContainerComponent,
     LeerlingViewComponent,
-    ScoreGrafiekComponent
+    ScoreGrafiekComponent,
+    ScoreTabelComponent
   ],
   exports: [
     MijnGroepenComponent,
