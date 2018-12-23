@@ -12,3 +12,17 @@ vollo-score-grafiek {
   display: block;
   height: 300px;
 }
+
+.mat-card-title {
+  display: flex;
+  flex-direction: row;
+
+  span {
+    flex-grow: 1;
+  }
+
+  button {
+    margin-top: -7px;
+    margin-bottom: -10px;
+  }
+}

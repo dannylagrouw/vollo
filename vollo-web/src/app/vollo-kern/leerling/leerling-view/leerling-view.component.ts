@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Leerling } from '../../groep/leerling.model';
 import { Score } from '../../common/model/score.model';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
@@ -27,5 +27,11 @@ export class LeerlingViewComponent {
 
   @Input() scores: Score[];
 
+  @Output() onClose = new EventEmitter();
+
   constructor(private sanitizer: DomSanitizer) {}
+
+  close() {
+    this.onClose.emit();
+  }
 }

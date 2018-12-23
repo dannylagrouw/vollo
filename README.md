@@ -12,8 +12,9 @@ mvn spring-boot:run -Dspring-boot.run.arguments=--genereer-testdata
 - angular tests
 - web en backend als modules in 1 project
 - 401 -> naar loginpagina
-- charts
-- trends voor scores
+  x charts
+- trends voor scores - trends in backend berekenen en meesturen - minitrends op groeppagina - scores in tabel op leerlingpanel
+  x leerlingpanel kunnen sluiten
 - notities
 - importeren
 - verplaats liquibase.properties naar subprojecten

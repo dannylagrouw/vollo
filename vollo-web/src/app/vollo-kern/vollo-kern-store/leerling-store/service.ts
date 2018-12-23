@@ -19,4 +19,8 @@ export class LeerlingStoreService {
   ophalen(id: number) {
     this.store.dispatch(new leerlingActions.OphalenAction(id));
   }
+
+  deselecteren() {
+    this.store.dispatch(new leerlingActions.DeselecterenAction());
+  }
 }

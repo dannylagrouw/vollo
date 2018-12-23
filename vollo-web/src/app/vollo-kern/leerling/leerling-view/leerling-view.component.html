@@ -2,7 +2,10 @@
   <mat-card-header>
     <img mat-card-avatar [src]="fotoData" *ngIf="fotoData">
     <img mat-card-avatar src="/assets/lege-avatar.png" *ngIf="!fotoData">
-    <mat-card-title>{{leerling?.roepnaam}} {{leerling?.tussenvoegsel}} {{leerling?.achternaam}}</mat-card-title>
+    <mat-card-title>
+      <span>{{leerling?.roepnaam}} {{leerling?.tussenvoegsel}} {{leerling?.achternaam}}</span>
+      <button mat-icon-button (click)="close()"><mat-icon fontIcon="fa-times"></mat-icon></button>
+    </mat-card-title>
     <mat-card-subtitle>
       <i class="fa" [ngClass]="{'fa-mars': leerling?.geslacht === 'MAN', 'fa-venus': leerling?.geslacht === 'VROUW', 'fa-genderless': leerling?.geslacht === 'OVERIG'}"></i>
       {{leerling?.geboortedatum}}

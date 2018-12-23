@@ -8,6 +8,11 @@ export function leerlingReducer(state = initialState, action: Actions): State {
         ...state,
         geselecteerd: action.id
       };
+    case ActionTypes.DESELECTEREN:
+      return {
+        ...state,
+        geselecteerd: undefined
+      };
     case ActionTypes.OPHALEN:
       return state;
     case ActionTypes.OPHALEN_SUCCES:

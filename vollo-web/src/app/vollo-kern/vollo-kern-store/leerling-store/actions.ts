@@ -4,6 +4,7 @@ import { Score } from '../../common/model/score.model';
 
 export enum ActionTypes {
   SELECTEREN = '[vollo.kern.leerling] Selecteren',
+  DESELECTEREN = '[vollo.kern.leerling] Deselecteren',
   OPHALEN = '[vollo.kern.leerling] Ophalen',
   OPHALEN_SUCCES = '[vollo.kern.leerling] Ophalen succes',
   OPHALEN_MISLUKT = '[vollo.kern.leerling] Ophalen mislukt',
@@ -15,6 +16,11 @@ export enum ActionTypes {
 export class SelecterenAction implements Action {
   readonly type = ActionTypes.SELECTEREN;
   constructor(public id: number) {}
+}
+
+export class DeselecterenAction implements Action {
+  readonly type = ActionTypes.DESELECTEREN;
+  constructor() {}
 }
 
 export class OphalenAction implements Action {
@@ -49,6 +55,7 @@ export class OphalenScoresMisluktAction implements Action {
 
 export type Actions =
   | SelecterenAction
+  | DeselecterenAction
   | OphalenAction
   | OphalenSuccesAction
   | OphalenMisluktAction

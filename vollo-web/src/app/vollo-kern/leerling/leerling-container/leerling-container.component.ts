@@ -11,4 +11,8 @@ export class LeerlingContainerComponent {
   scores$ = this.leerlingStoreService.scores$;
 
   constructor(private leerlingStoreService: LeerlingStoreService) {}
+
+  close() {
+    this.leerlingStoreService.deselecteren();
+  }
 }
