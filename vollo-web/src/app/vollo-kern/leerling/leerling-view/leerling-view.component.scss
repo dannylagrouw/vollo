@@ -1,6 +1,5 @@
 .leerling {
   width: 400px;
-  max-width: 400px;
 }
 
 .example-header-image {
@@ -11,6 +10,10 @@
 vollo-score-grafiek {
   display: block;
   height: 300px;
+}
+
+.mat-card {
+  box-shadow: none;
 }
 
 .mat-card-title {

@@ -15,3 +15,6 @@ $icons-path: '../node_modules/ag-grid/src/styles/material-icons/';
 .mat-card-header-text {
   flex-grow: 1;
 }
+.mat-tab-label {
+  min-width: 80px !important;
+}

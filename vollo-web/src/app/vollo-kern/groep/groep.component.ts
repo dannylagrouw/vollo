@@ -7,6 +7,7 @@ import { Groep } from './groep.model';
 import { of } from 'rxjs';
 import { GroepStoreService } from '../vollo-kern-store/groep-store';
 import { LeerlingStoreService } from '../vollo-kern-store/leerling-store';
+import * as moment from 'moment';
 
 @Component({
   selector: 'vollo-groep',
@@ -26,9 +27,9 @@ export class GroepComponent implements OnInit {
   };
   leerlingColDefs = <ColDef[]>[
     { headerName: 'ID', field: 'leerling.id', hide: true },
-    { headerName: 'Roepnaam', field: 'leerling.roepnaam', width: 200 },
-    { headerName: 'Tussenvoegsel', field: 'leerling.tussenvoegsel', width: 100 },
-    { headerName: 'Achternaam', field: 'leerling.achternaam', width: 300 },
+    { headerName: 'Roepnaam', field: 'leerling.roepnaam', width: 200, pinned: true },
+    { headerName: 'Tussenvoegsel', field: 'leerling.tussenvoegsel', width: 100, pinned: true },
+    { headerName: 'Achternaam', field: 'leerling.achternaam', width: 300, pinned: true },
     {
       headerName: 'Geslacht',
       field: 'leerling.geslacht',
@@ -62,7 +63,7 @@ export class GroepComponent implements OnInit {
         this.columnDefs = groep
           ? [
               ...this.leerlingColDefs,
-              ...groep.toetsen.map(toetsafname => {
+              ...groep.toetsen.sort((a, b) => moment(b.datum).diff(a.datum)).map(toetsafname => {
                 return <ColDef>{
                   headerName: toetsafname.toets.omschrijving,
                   headerTooltip: `${toetsafname.toets.soort} ${toetsafname.datum}`,

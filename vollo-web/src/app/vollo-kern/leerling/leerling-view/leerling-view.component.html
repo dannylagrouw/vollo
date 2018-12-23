@@ -12,8 +12,24 @@
     </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <vollo-score-grafiek [scores]="scores"></vollo-score-grafiek>
-    <vollo-score-tabel [scores]="scores"></vollo-score-tabel>
+    <mat-tab-group dynamicHeight>
+      <mat-tab label="Scores">
+        <ng-template matTabContent>
+          <vollo-score-grafiek [scores]="scores"></vollo-score-grafiek>
+          <vollo-score-tabel [scores]="scores"></vollo-score-tabel>
+        </ng-template>
+      </mat-tab>
+      <mat-tab label="Notities">
+        <ng-template matTabContent>
+          Notities
+        </ng-template>
+      </mat-tab>
+      <mat-tab label="Info">
+        <ng-template matTabContent>
+          Info
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
   </mat-card-content>
   <mat-card-actions>
     <button mat-button>LIKE</button>

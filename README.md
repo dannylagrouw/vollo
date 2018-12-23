@@ -19,6 +19,7 @@ mvn spring-boot:run -Dspring-boot.run.arguments=--genereer-testdata
 - leerlingpanel: klik op naam: open schermvullend
 - notities
 - importeren
+- nl locale, date format
 - verplaats liquibase.properties naar subprojecten
 
 ### Kafka
