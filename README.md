@@ -20,6 +20,7 @@ mvn spring-boot:run -Dspring-boot.run.arguments=--genereer-testdata
 - notities
 - importeren
 - nl locale, date format
+- backend: vervang Date door Local/ZonedDates
 - verplaats liquibase.properties naar subprojecten
 
 ### Kafka

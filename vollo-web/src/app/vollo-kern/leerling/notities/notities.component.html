@@ -1,0 +1,26 @@
+<div class="notitieForm">
+  <form [formGroup]="form">
+    <mat-form-field>
+    <textarea matInput
+              formControlName="notitie"
+              placeholder="(Nieuwe notitie)"></textarea>
+      <mat-error *ngIf="form.get('notitie').invalid">Typ een nieuwe notitie om op te slaan</mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="opslaan()">Opslaan</button>
+  </form>
+</div>
+<div class="notities">
+  <mat-card *ngFor="let notitie of notities$ | async">
+    <mat-card-header>
+      <mat-card-title>
+        {{notitie.datum | date : 'dd-MM-yyyy HH:mm'}}
+      </mat-card-title>
+      <mat-card-subtitle>
+        {{notitie.medewerker.voornaam}} {{notitie.medewerker.tussenvoegsel}} {{notitie.medewerker.achternaam}}
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      {{notitie.tekst}}
+    </mat-card-content>
+  </mat-card>
+</div>

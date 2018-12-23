@@ -9,6 +9,12 @@ export class Leerling extends DomeinObject {
   geslacht: 'MAN' | 'VROUW' | 'OVERIG';
   scores: (string | number)[];
   foto: string;
+
+  // volledigeNaam() {
+  //   return this.tussenvoegsel
+  //     ? `${this.roepnaam} ${this.tussenvoegsel} ${this.achternaam}`
+  //     : `${this.roepnaam} ${this.achternaam}`;
+  // }
 }
 
 export function fromServer(leerling: Leerling) {

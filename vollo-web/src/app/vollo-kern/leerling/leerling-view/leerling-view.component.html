@@ -15,24 +15,30 @@
     <mat-tab-group dynamicHeight>
       <mat-tab label="Scores">
         <ng-template matTabContent>
-          <vollo-score-grafiek [scores]="scores"></vollo-score-grafiek>
-          <vollo-score-tabel [scores]="scores"></vollo-score-tabel>
+          <div class="tab-content">
+            <vollo-score-grafiek [scores]="scores"></vollo-score-grafiek>
+            <vollo-score-tabel [scores]="scores"></vollo-score-tabel>
+          </div>
         </ng-template>
       </mat-tab>
       <mat-tab label="Notities">
         <ng-template matTabContent>
-          Notities
+          <div class="tab-content">
+            <vollo-notities [leerling]="leerling"></vollo-notities>
+          </div>
         </ng-template>
       </mat-tab>
       <mat-tab label="Info">
         <ng-template matTabContent>
-          Info
+          <div class="tab-content">
+            Info
+          </div>
         </ng-template>
       </mat-tab>
     </mat-tab-group>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
+    <button mat-icon-button><mat-icon fontIcon="fa-print"></mat-icon></button>
+    <button mat-icon-button><mat-icon fontIcon="fa-phone"></mat-icon></button>
   </mat-card-actions>
 </mat-card>

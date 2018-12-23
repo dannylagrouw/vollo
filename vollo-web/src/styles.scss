@@ -18,3 +18,7 @@ $icons-path: '../node_modules/ag-grid/src/styles/material-icons/';
 .mat-tab-label {
   min-width: 80px !important;
 }
+.mat-icon.fa {
+  font-size: 1.3rem;
+  color: rgba(0, 0, 0, 0.65);
+}

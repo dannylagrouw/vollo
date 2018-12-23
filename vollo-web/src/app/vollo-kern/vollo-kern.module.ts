@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MijnGroepenComponent } from './mijn-groepen/mijn-groepen.component';
 import { InloggenComponent } from './inloggen/inloggen.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { VolloMaterialModule } from '../vollo-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -19,12 +19,14 @@ import { LeerlingViewComponent } from './leerling/leerling-view/leerling-view.co
 import { PlotlyModule } from 'angular-plotly.js';
 import { ScoreGrafiekComponent } from './score/score-grafiek/score-grafiek.component';
 import { ScoreTabelComponent } from './score/score-tabel/score-tabel.component';
+import { NotitiesComponent } from './leerling/notities/notities.component';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
     FormsModule,
+    ReactiveFormsModule,
     FlexLayoutModule,
     HttpClientModule,
     VolloMaterialModule,
@@ -42,7 +44,8 @@ import { ScoreTabelComponent } from './score/score-tabel/score-tabel.component';
     LeerlingContainerComponent,
     LeerlingViewComponent,
     ScoreGrafiekComponent,
-    ScoreTabelComponent
+    ScoreTabelComponent,
+    NotitiesComponent
   ],
   exports: [
     MijnGroepenComponent,

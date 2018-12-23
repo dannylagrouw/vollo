@@ -1,16 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { Action } from '@ngrx/store';
+import { Action, Store } from '@ngrx/store';
 import { EMPTY, Observable, of as observableOf } from 'rxjs';
-import { catchError, delay, filter, map, mergeMap, tap } from 'rxjs/operators';
+import { catchError, delay, filter, map, mergeMap, tap, withLatestFrom } from 'rxjs/operators';
 import * as leerlingActions from './actions';
 import { HttpClient } from '@angular/common/http';
 import { fromServer, Leerling } from '../../groep/leerling.model';
 import { Score } from '../../common/model/score.model';
+import { Notitie } from '../../common/model/notitie.model';
+import { VolloKernState } from '../index';
 
 @Injectable()
 export class LeerlingStoreEffects {
-  constructor(private http: HttpClient, private actions$: Actions) {}
+  constructor(
+    private http: HttpClient,
+    private actions$: Actions,
+    private store: Store<VolloKernState.State>
+  ) {}
 
   @Effect()
   selecteren$: Observable<Action> = this.actions$.pipe(
@@ -51,6 +57,28 @@ export class LeerlingStoreEffects {
       this.http.get<Score[]>(`/api/leerling/${action.leerlingId}/scores`).pipe(
         map(scores => new leerlingActions.OphalenScoresSuccesAction(scores)),
         catchError(error => observableOf(new leerlingActions.OphalenScoresMisluktAction(error)))
+      )
+    )
+  );
+
+  @Effect()
+  ophalenNotities$: Observable<Action> = this.actions$.pipe(
+    ofType(leerlingActions.ActionTypes.OPHALEN_NOTITIES),
+    mergeMap((action: leerlingActions.OphalenNotitiesAction) =>
+      this.http.get<Notitie[]>(`/api/notitie/leerling/${action.leerlingId}`).pipe(
+        map(notities => new leerlingActions.OphalenNotitiesSuccesAction(notities)),
+        catchError(error => observableOf(new leerlingActions.OphalenNotitiesMisluktAction(error)))
+      )
+    )
+  );
+
+  @Effect()
+  opslaanNotitie$: Observable<Action> = this.actions$.pipe(
+    ofType(leerlingActions.ActionTypes.OPSLAAN_NOTITIE),
+    mergeMap((action: leerlingActions.OpslaanNotitieAction) =>
+      this.http.post<Notitie>(`/api/notitie/leerling/${action.leerlingId}`, action.notitie).pipe(
+        map(notitie => new leerlingActions.OpslaanNotitieSuccesAction(notitie)),
+        catchError(error => observableOf(new leerlingActions.OpslaanNotitieMisluktAction(error)))
       )
     )
   );

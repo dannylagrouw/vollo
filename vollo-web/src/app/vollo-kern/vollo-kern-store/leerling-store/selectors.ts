@@ -2,12 +2,15 @@ import { createFeatureSelector, createSelector, MemoizedSelector } from '@ngrx/s
 import { State } from './state';
 import { Leerling } from '../../groep/leerling.model';
 import { Score } from '../../common/model/score.model';
+import { Notitie } from '../../common/model/notitie.model';
 
 const getLeerling = (state: State): any => state.leerling;
 
 const getGeselecteerd = (state: State): any => state.geselecteerd;
 
 const getScores = (state: State): any => state.scores;
+
+const getNotities = (state: State): any => state.notities;
 
 export const selectLeerlingState: MemoizedSelector<object, State> = createFeatureSelector<State>(
   'leerling'
@@ -26,4 +29,9 @@ export const selectGeselecteerd: MemoizedSelector<object, number> = createSelect
 export const selectScores: MemoizedSelector<object, Score[]> = createSelector(
   selectLeerlingState,
   getScores
+);
+
+export const selectNotities: MemoizedSelector<object, Notitie[]> = createSelector(
+  selectLeerlingState,
+  getNotities
 );

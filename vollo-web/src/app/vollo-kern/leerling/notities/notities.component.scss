@@ -1,0 +1,21 @@
+form {
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+textarea {
+  min-height: 80px;
+}
+
+button {
+  margin-top: 10px;
+}
+
+.notities {
+  max-height: calc(100vh - 500px);
+  overflow-y: auto;
+}

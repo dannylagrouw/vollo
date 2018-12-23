@@ -1,6 +1,7 @@
 import { Action } from '@ngrx/store';
 import { Leerling } from '../../groep/leerling.model';
 import { Score } from '../../common/model/score.model';
+import { Notitie } from '../../common/model/notitie.model';
 
 export enum ActionTypes {
   SELECTEREN = '[vollo.kern.leerling] Selecteren',
@@ -10,7 +11,13 @@ export enum ActionTypes {
   OPHALEN_MISLUKT = '[vollo.kern.leerling] Ophalen mislukt',
   OPHALEN_SCORES = '[vollo.kern.leerling] Ophalen scores',
   OPHALEN_SCORES_SUCCES = '[vollo.kern.leerling] Ophalen scores succes',
-  OPHALEN_SCORES_MISLUKT = '[vollo.kern.leerling] Ophalen scores mislukt'
+  OPHALEN_SCORES_MISLUKT = '[vollo.kern.leerling] Ophalen scores mislukt',
+  OPHALEN_NOTITIES = '[vollo.kern.leerling] Ophalen notities',
+  OPHALEN_NOTITIES_SUCCES = '[vollo.kern.leerling] Ophalen notities succes',
+  OPHALEN_NOTITIES_MISLUKT = '[vollo.kern.leerling] Ophalen notities mislukt',
+  OPSLAAN_NOTITIE = '[vollo.kern.leerling] Opslaan notitie',
+  OPSLAAN_NOTITIE_SUCCES = '[vollo.kern.leerling] Opslaan notitie succes',
+  OPSLAAN_NOTITIE_MISLUKT = '[vollo.kern.leerling] Opslaan notitie mislukt'
 }
 
 export class SelecterenAction implements Action {
@@ -53,6 +60,36 @@ export class OphalenScoresMisluktAction implements Action {
   constructor(public foutmelding: string) {}
 }
 
+export class OphalenNotitiesAction implements Action {
+  readonly type = ActionTypes.OPHALEN_NOTITIES;
+  constructor(public leerlingId: number) {}
+}
+
+export class OphalenNotitiesSuccesAction implements Action {
+  readonly type = ActionTypes.OPHALEN_NOTITIES_SUCCES;
+  constructor(public notities: Notitie[]) {}
+}
+
+export class OphalenNotitiesMisluktAction implements Action {
+  readonly type = ActionTypes.OPHALEN_NOTITIES_MISLUKT;
+  constructor(public foutmelding: string) {}
+}
+
+export class OpslaanNotitieAction implements Action {
+  readonly type = ActionTypes.OPSLAAN_NOTITIE;
+  constructor(public leerlingId: number, public notitie: Notitie) {}
+}
+
+export class OpslaanNotitieSuccesAction implements Action {
+  readonly type = ActionTypes.OPSLAAN_NOTITIE_SUCCES;
+  constructor(public notitie: Notitie) {}
+}
+
+export class OpslaanNotitieMisluktAction implements Action {
+  readonly type = ActionTypes.OPSLAAN_NOTITIE_MISLUKT;
+  constructor(public foutmelding: string) {}
+}
+
 export type Actions =
   | SelecterenAction
   | DeselecterenAction
@@ -61,4 +98,10 @@ export type Actions =
   | OphalenMisluktAction
   | OphalenScoresAction
   | OphalenScoresSuccesAction
-  | OphalenScoresMisluktAction;
+  | OphalenScoresMisluktAction
+  | OphalenNotitiesAction
+  | OphalenNotitiesSuccesAction
+  | OphalenNotitiesMisluktAction
+  | OpslaanNotitieAction
+  | OpslaanNotitieSuccesAction
+  | OpslaanNotitieMisluktAction;
