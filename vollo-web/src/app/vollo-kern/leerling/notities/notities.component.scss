@@ -16,6 +16,16 @@ button {
 }
 
 .notities {
-  max-height: calc(100vh - 500px);
+  margin-top: 40px;
+  max-height: calc(100vh - 425px);
   overflow-y: auto;
+}
+
+.mat-card {
+  margin: 10px;
+}
+
+.mat-card-title,
+.mat-card-subtitle {
+  margin-left: -16px;
 }

@@ -10,7 +10,15 @@ import { Leerling } from '../../groep/leerling.model';
   styleUrls: ['./notities.component.scss']
 })
 export class NotitiesComponent implements OnInit {
-  @Input() leerling: Leerling;
+  _leerling: Leerling;
+  @Input()
+  set leerling(value: Leerling) {
+    this._leerling = value;
+    this.leerlingStoreService.ophalenNotities(value.id);
+  }
+  get leerling() {
+    return this._leerling;
+  }
 
   notities$ = this.leerlingStoreService.notities$;
 
@@ -22,7 +30,6 @@ export class NotitiesComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.leerlingStoreService.ophalenNotities(this.leerling.id);
     this.form = this.formBuilder.group({
       notitie: [null, Validators.required]
     });

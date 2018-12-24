@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Action, Store } from '@ngrx/store';
-import { EMPTY, Observable, of as observableOf } from 'rxjs';
-import { catchError, delay, filter, map, mergeMap, tap, withLatestFrom } from 'rxjs/operators';
+import { Observable, of as observableOf } from 'rxjs';
+import { catchError, delay, filter, map, mergeMap } from 'rxjs/operators';
 import * as leerlingActions from './actions';
 import { HttpClient } from '@angular/common/http';
 import { fromServer, Leerling } from '../../groep/leerling.model';
 import { Score } from '../../common/model/score.model';
 import { Notitie } from '../../common/model/notitie.model';
 import { VolloKernState } from '../index';
+import * as moment from 'moment';
 
 @Injectable()
 export class LeerlingStoreEffects {
@@ -66,6 +67,7 @@ export class LeerlingStoreEffects {
     ofType(leerlingActions.ActionTypes.OPHALEN_NOTITIES),
     mergeMap((action: leerlingActions.OphalenNotitiesAction) =>
       this.http.get<Notitie[]>(`/api/notitie/leerling/${action.leerlingId}`).pipe(
+        map(notities => notities.sort((a, b) => moment(b.datum).diff(a.datum))),
         map(notities => new leerlingActions.OphalenNotitiesSuccesAction(notities)),
         catchError(error => observableOf(new leerlingActions.OphalenNotitiesMisluktAction(error)))
       )

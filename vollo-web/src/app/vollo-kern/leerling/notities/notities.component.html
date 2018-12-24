@@ -10,6 +10,16 @@
   </form>
 </div>
 <div class="notities">
+  <mat-card *ngIf="!form.get('notitie').pristine && form.get('notitie').value">
+    <mat-card-header>
+      <mat-card-title>
+        Nieuwe notitie
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <markdown [data]="form.get('notitie').value"></markdown>
+    </mat-card-content>
+  </mat-card>
   <mat-card *ngFor="let notitie of notities$ | async">
     <mat-card-header>
       <mat-card-title>
@@ -20,7 +30,7 @@
       </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      {{notitie.tekst}}
+      <markdown [data]="notitie.tekst"></markdown>
     </mat-card-content>
   </mat-card>
 </div>

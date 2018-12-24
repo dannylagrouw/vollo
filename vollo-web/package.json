@@ -33,6 +33,7 @@
     "angular-plotly.js": "^0.1.15",
     "core-js": "^2.4.1",
     "moment": "^2.22.2",
+    "ngx-markdown": "^7.0.3",
     "normalize.css": "^8.0.0",
     "plotly.js": "^1.43.1",
     "plotly.js-locales": "^1.43.1",

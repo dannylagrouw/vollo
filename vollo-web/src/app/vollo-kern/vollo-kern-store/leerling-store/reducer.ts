@@ -38,7 +38,10 @@ export function leerlingReducer(state = initialState, action: Actions): State {
         scores: undefined
       };
     case ActionTypes.OPHALEN_NOTITIES:
-      return state;
+      return {
+        ...state,
+        notities: []
+      };
     case ActionTypes.OPHALEN_NOTITIES_SUCCES:
       return {
         ...state,
@@ -54,7 +57,7 @@ export function leerlingReducer(state = initialState, action: Actions): State {
     case ActionTypes.OPSLAAN_NOTITIE_SUCCES:
       return {
         ...state,
-        notities: [...state.notities, action.notitie]
+        notities: [action.notitie, ...state.notities]
       };
     case ActionTypes.OPSLAAN_NOTITIE_MISLUKT:
       return state;

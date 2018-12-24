@@ -20,6 +20,7 @@ import { PlotlyModule } from 'angular-plotly.js';
 import { ScoreGrafiekComponent } from './score/score-grafiek/score-grafiek.component';
 import { ScoreTabelComponent } from './score/score-tabel/score-tabel.component';
 import { NotitiesComponent } from './leerling/notities/notities.component';
+import { MarkdownModule } from 'ngx-markdown';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import { NotitiesComponent } from './leerling/notities/notities.component';
     VolloMaterialModule,
     AgGridModule.withComponents([]),
     VolloKernStoreModule,
-    PlotlyModule
+    PlotlyModule,
+    MarkdownModule.forRoot()
   ],
   declarations: [
     MijnGroepenComponent,
