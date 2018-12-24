@@ -1,4 +1,4 @@
-<mat-card class="leerling">
+<mat-card class="leerling" [@leerling]="leerling">
   <mat-card-header>
     <img mat-card-avatar [src]="fotoData" *ngIf="fotoData">
     <img mat-card-avatar src="/assets/lege-avatar.png" *ngIf="!fotoData">
