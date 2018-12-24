@@ -6,11 +6,13 @@
               placeholder="(Nieuwe notitie)"></textarea>
       <mat-error *ngIf="form.get('notitie').invalid">Typ een nieuwe notitie om op te slaan</mat-error>
     </mat-form-field>
-    <button mat-raised-button color="primary" (click)="opslaan()">Opslaan</button>
+    <button mat-raised-button color="primary" type="button" (click)="opslaan()">Opslaan</button>
+    <button mat-raised-button type="button" (click)="form.reset()" *ngIf="form.dirty">Annuleren</button>
   </form>
 </div>
-<div class="notities">
-  <mat-card *ngIf="!form.get('notitie').pristine && form.get('notitie').value">
+<div class="notities" *ngIf="(notities$ | async).length > 0 || form.get('notitie').value">
+  <mat-card *ngIf="!form.get('notitie').pristine && form.get('notitie').value"
+            [@nieuweNotitie]="form.get('notitie').value">
     <mat-card-header>
       <mat-card-title>
         Nieuwe notitie
