@@ -12,6 +12,8 @@ const getScores = (state: State): any => state.scores;
 
 const getNotities = (state: State): any => state.notities;
 
+const getNotitieFormZichtbaar = (state: State): any => state.notitieFormZichtbaar;
+
 export const selectLeerlingState: MemoizedSelector<object, State> = createFeatureSelector<State>(
   'leerling'
 );
@@ -34,4 +36,9 @@ export const selectScores: MemoizedSelector<object, Score[]> = createSelector(
 export const selectNotities: MemoizedSelector<object, Notitie[]> = createSelector(
   selectLeerlingState,
   getNotities
+);
+
+export const selectNotitieFormZichtbaar: MemoizedSelector<object, boolean> = createSelector(
+  selectLeerlingState,
+  getNotitieFormZichtbaar
 );

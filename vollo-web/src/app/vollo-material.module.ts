@@ -10,7 +10,8 @@ import {
   MatMenuModule,
   MatCardModule,
   MatTabsModule,
-  MatListModule
+  MatListModule,
+  MatButtonToggleModule
 } from '@angular/material';
 
 @NgModule({
@@ -25,7 +26,8 @@ import {
     MatIconModule,
     MatMenuModule,
     MatTabsModule,
-    MatListModule
+    MatListModule,
+    MatButtonToggleModule
   ],
   exports: [
     MatButtonModule,
@@ -38,7 +40,8 @@ import {
     MatIconModule,
     MatMenuModule,
     MatTabsModule,
-    MatListModule
+    MatListModule,
+    MatButtonToggleModule
   ]
 })
 export class VolloMaterialModule {}

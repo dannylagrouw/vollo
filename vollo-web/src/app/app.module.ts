@@ -16,6 +16,7 @@ import { GroepComponent } from './vollo-kern/groep/groep.component';
 import { VolloKernStoreModule } from './vollo-kern/vollo-kern-store';
 import { PlotlyModule } from 'angular-plotly.js';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { httpInterceptorProviders } from './vollo-kern/common/http-interceptors';
 
 const appRoutes: Routes = [
   { path: 'inloggen', component: InloggenComponent, data: { titel: 'Inloggen' } },
@@ -53,7 +54,7 @@ const appRoutes: Routes = [
     VolloKernStoreModule,
     PlotlyModule
   ],
-  providers: [MatIconRegistry],
+  providers: [MatIconRegistry, httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule {

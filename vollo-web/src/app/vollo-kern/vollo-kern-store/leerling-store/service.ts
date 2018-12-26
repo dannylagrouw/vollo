@@ -11,6 +11,9 @@ export class LeerlingStoreService {
   geselecteerd$ = this.store.pipe(select(LeerlingStoreSelectors.selectGeselecteerd));
   scores$ = this.store.pipe(select(LeerlingStoreSelectors.selectScores));
   notities$ = this.store.pipe(select(LeerlingStoreSelectors.selectNotities));
+  notitieFormZichtbaar$ = this.store.pipe(
+    select(LeerlingStoreSelectors.selectNotitieFormZichtbaar)
+  );
 
   constructor(private store: Store<VolloKernState.State>) {}
 
@@ -32,5 +35,9 @@ export class LeerlingStoreService {
 
   opslaanNotitie(leerlingId: number, notitie: Notitie) {
     this.store.dispatch(new leerlingActions.OpslaanNotitieAction(leerlingId, notitie));
+  }
+
+  notitieFormZichtbaar(zichtbaar: boolean) {
+    this.store.dispatch(new leerlingActions.NotitieFormZichtbaarAction(zichtbaar));
   }
 }

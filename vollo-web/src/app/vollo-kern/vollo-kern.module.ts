@@ -21,6 +21,8 @@ import { ScoreGrafiekComponent } from './score/score-grafiek/score-grafiek.compo
 import { ScoreTabelComponent } from './score/score-tabel/score-tabel.component';
 import { NotitiesComponent } from './leerling/notities/notities.component';
 import { MarkdownModule } from 'ngx-markdown';
+import { NotitieNiveauOmschrijvingPipe } from './common/pipes/notitie-niveau-omschrijving.pipe';
+import { NotitieNiveauIconComponent } from './leerling/notities/notitie-niveau-icon/notitie-niveau-icon.component';
 
 @NgModule({
   imports: [
@@ -47,7 +49,9 @@ import { MarkdownModule } from 'ngx-markdown';
     LeerlingViewComponent,
     ScoreGrafiekComponent,
     ScoreTabelComponent,
-    NotitiesComponent
+    NotitiesComponent,
+    NotitieNiveauOmschrijvingPipe,
+    NotitieNiveauIconComponent
   ],
   exports: [
     MijnGroepenComponent,

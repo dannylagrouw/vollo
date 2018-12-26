@@ -61,6 +61,11 @@ export function leerlingReducer(state = initialState, action: Actions): State {
       };
     case ActionTypes.OPSLAAN_NOTITIE_MISLUKT:
       return state;
+    case ActionTypes.NOTITIE_FORM_ZICHTBAAR:
+      return {
+        ...state,
+        notitieFormZichtbaar: action.zichtbaar
+      };
     default: {
       return state;
     }

@@ -1,27 +1,46 @@
-form {
-  width: 100%;
-  margin-bottom: 5px;
-}
+.notitieForm {
+  &.ingeklapt {
+    display: none;
+  }
 
-mat-form-field {
-  width: 100%;
-}
+  form {
+    width: 100%;
+    margin-bottom: 5px;
+  }
 
-textarea {
-  min-height: 80px;
-}
+  mat-form-field {
+    width: 100%;
+  }
 
-button {
-  margin-top: 10px;
-  margin-right: 8px;
+  textarea {
+    min-height: 80px;
+  }
+
+  button {
+    margin-top: 10px;
+  }
+
+  button:not(.toggle-zichtbaar),
+  .mat-button-toggle-group {
+    margin-right: 8px;
+  }
+
+  button.toggle-zichtbaar {
+    float: right;
+  }
 }
 
 .notities {
-  margin-top: 40px;
-  max-height: calc(100vh - 425px);
+  margin-top: 30px;
+  max-height: calc(100vh - 417px);
   overflow-y: auto;
   background-color: rgba(0, 0, 0, 0.1);
   border: solid 1px rgba(0, 0, 0, 0.1);
+
+  &.notitieForm-ingeklapt {
+    margin-top: 10px;
+    max-height: calc(100vh - 264px);
+  }
 }
 
 .mat-card {
@@ -30,7 +49,6 @@ button {
 
 .mat-card-title,
 .mat-card-subtitle {
-  margin-left: -16px;
 }
 
 .mat-card-title {
@@ -39,4 +57,14 @@ button {
 
 .mat-card-subtitle {
   margin-bottom: 0;
+}
+
+.mat-card-avatar {
+  background-color: #ea80fc;
+  line-height: 40px;
+  text-align: center;
+
+  .mat-icon {
+    vertical-align: middle;
+  }
 }

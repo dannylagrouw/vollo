@@ -12,13 +12,23 @@ mvn spring-boot:run -Dspring-boot.run.arguments=--genereer-testdata
 - angular tests
 - web en backend als modules in 1 project
 - 401 -> naar loginpagina
-  x charts
+  - ~~charts~~
 - trends voor scores - trends in backend berekenen en meesturen - minitrends op groeppagina
-  x scores in tabel op leerlingpanel
-  x leerlingpanel kunnen sluiten
-- leerlingpanel: klik op naam: open schermvullend
-- notities
+  - ~~scores in tabel op leerlingpanel~~
+  - ~~leerlingpanel kunnen sluiten~~
+- leerlingpanel
+  - (?) klik op naam: open schermvullend
+  - historie: groepen, inschrijvingen
+  - (?) of geintegreerde tijdslijn met groepen, inschrijvingen, scores, aantekeningen...
+- ~~notities~~
+  - niveau: persoonlijk, collega's, ouders
+- testdata
+  - scores in voorgaande jaren
+  - meerdere medewerkers per school
+  - medewerker/groep historie
+- scoreoverzicht met alle scores in tabel
 - importeren
+- hibernate validations activeren
 - nl locale, date format
 - spinner tijdens requests
 - backend: vervang Date door Local/ZonedDates

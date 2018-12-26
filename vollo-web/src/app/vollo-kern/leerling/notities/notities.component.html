@@ -1,29 +1,58 @@
-<div class="notitieForm">
+<div class="notitieForm" *ngIf="notitieFormZichtbaar$ | async">
   <form [formGroup]="form">
     <mat-form-field>
-    <textarea matInput
-              formControlName="notitie"
-              placeholder="(Nieuwe notitie)"></textarea>
-      <mat-error *ngIf="form.get('notitie').invalid">Typ een nieuwe notitie om op te slaan</mat-error>
+      <textarea matInput
+                formControlName="tekst"
+                placeholder="(Nieuwe notitie)"></textarea>
+      <mat-error *ngIf="form.get('tekst').invalid">Typ een nieuwe notitie om op te slaan</mat-error>
     </mat-form-field>
-    <button mat-raised-button color="primary" type="button" (click)="opslaan()">Opslaan</button>
+    <mat-button-toggle-group formControlName="notitieNiveau" class="medium">
+      <mat-button-toggle value="PERSOONLIJK" title="Alleen zichtbaar voor jou">
+        <mat-icon fontIcon="fa-user"></mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle value="COLLEGAS" title="Zichtbaar voor collega's met {{leerling.roepnaam}} in de groep">
+        <mat-icon fontIcon="fa-user-friends"></mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle value="OUDERS" title="Zichtbaar voor collega's en de ouders van {{leerling.roepnaam}}">
+        <mat-icon fontIcon="fa-users"></mat-icon>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+    <button mat-raised-button color="primary" type="button"
+            (click)="opslaan()" [disabled]="this.form.invalid">Opslaan</button>
     <button mat-raised-button type="button" (click)="form.reset()" *ngIf="form.dirty">Annuleren</button>
+    <button mat-icon-button class="toggle-zichtbaar" (click)="toggleZichtbaar(false)" type="button">
+      <mat-icon fontIcon="fa-angle-up"></mat-icon>
+    </button>
   </form>
 </div>
-<div class="notities" *ngIf="(notities$ | async).length > 0 || form.get('notitie').value">
-  <mat-card *ngIf="!form.get('notitie').pristine && form.get('notitie').value"
-            [@nieuweNotitie]="form.get('notitie').value">
+<div class="notitieForm-ingeklapt" *ngIf="!(notitieFormZichtbaar$ | async)">
+  <button mat-button (click)="toggleZichtbaar(true)">
+    Notitie toevoegen
+  </button>
+</div>
+<div class="notities" *ngIf="(notities$ | async).length > 0 || form.get('tekst').value"
+     [ngClass]="{'notitieForm-ingeklapt': !(notitieFormZichtbaar$ | async)}">
+  <mat-card *ngIf="!form.get('tekst').pristine && form.get('tekst').value"
+            [@nieuweNotitie]="form.get('tekst').value">
     <mat-card-header>
+      <div mat-card-avatar>
+        <vollo-notitie-niveau-icon [notitieNiveau]="form.get('notitieNiveau').value"
+                                   [roepnaam]="leerling.roepnaam"></vollo-notitie-niveau-icon>
+      </div>
       <mat-card-title>
         Nieuwe notitie
       </mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <markdown [data]="form.get('notitie').value"></markdown>
+      <markdown [data]="form.get('tekst').value"></markdown>
     </mat-card-content>
   </mat-card>
   <mat-card *ngFor="let notitie of notities$ | async">
     <mat-card-header>
+      <div mat-card-avatar>
+        <vollo-notitie-niveau-icon [notitieNiveau]="notitie.notitieNiveau"
+                                   [roepnaam]="leerling.roepnaam"></vollo-notitie-niveau-icon>
+      </div>
       <mat-card-title>
         {{notitie.datum | date : 'dd-MM-yyyy HH:mm'}}
       </mat-card-title>

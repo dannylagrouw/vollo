@@ -7,11 +7,13 @@ export interface State {
   leerling?: Leerling;
   scores?: Score[];
   notities?: Notitie[];
+  notitieFormZichtbaar?: boolean;
 }
 
 export const initialState: State = {
   geselecteerd: undefined,
   leerling: undefined,
   scores: undefined,
-  notities: []
+  notities: [],
+  notitieFormZichtbaar: true
 };

@@ -1,0 +1,6 @@
+<mat-icon fontIcon="fa-user" title="Alleen zichtbaar voor jou"
+          *ngIf="notitieNiveau === 'PERSOONLIJK'"></mat-icon>
+<mat-icon fontIcon="fa-user-friends" title="Zichtbaar voor collega's met {{roepnaam}} in de groep"
+          *ngIf="notitieNiveau === 'COLLEGAS'"></mat-icon>
+<mat-icon fontIcon="fa-users" title="Zichtbaar voor collega's en de ouders van {{roepnaam}}"
+          *ngIf="notitieNiveau === 'OUDERS'"></mat-icon>

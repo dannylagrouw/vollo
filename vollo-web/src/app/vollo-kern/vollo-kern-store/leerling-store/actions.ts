@@ -17,7 +17,8 @@ export enum ActionTypes {
   OPHALEN_NOTITIES_MISLUKT = '[vollo.kern.leerling] Ophalen notities mislukt',
   OPSLAAN_NOTITIE = '[vollo.kern.leerling] Opslaan notitie',
   OPSLAAN_NOTITIE_SUCCES = '[vollo.kern.leerling] Opslaan notitie succes',
-  OPSLAAN_NOTITIE_MISLUKT = '[vollo.kern.leerling] Opslaan notitie mislukt'
+  OPSLAAN_NOTITIE_MISLUKT = '[vollo.kern.leerling] Opslaan notitie mislukt',
+  NOTITIE_FORM_ZICHTBAAR = '[vollo.kern.leerling] NotitieForm zichtbaar'
 }
 
 export class SelecterenAction implements Action {
@@ -90,6 +91,11 @@ export class OpslaanNotitieMisluktAction implements Action {
   constructor(public foutmelding: string) {}
 }
 
+export class NotitieFormZichtbaarAction implements Action {
+  readonly type = ActionTypes.NOTITIE_FORM_ZICHTBAAR;
+  constructor(public zichtbaar: boolean) {}
+}
+
 export type Actions =
   | SelecterenAction
   | DeselecterenAction
@@ -104,4 +110,5 @@ export type Actions =
   | OphalenNotitiesMisluktAction
   | OpslaanNotitieAction
   | OpslaanNotitieSuccesAction
-  | OpslaanNotitieMisluktAction;
+  | OpslaanNotitieMisluktAction
+  | NotitieFormZichtbaarAction;
