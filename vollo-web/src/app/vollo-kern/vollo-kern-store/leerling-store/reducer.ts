@@ -37,6 +37,18 @@ export function leerlingReducer(state = initialState, action: Actions): State {
         ...state,
         scores: undefined
       };
+    case ActionTypes.OPHALEN_HISTORIE:
+      return state;
+    case ActionTypes.OPHALEN_HISTORIE_SUCCES:
+      return {
+        ...state,
+        historie: action.historie
+      };
+    case ActionTypes.OPHALEN_HISTORIE_MISLUKT:
+      return {
+        ...state,
+        historie: []
+      };
     case ActionTypes.OPHALEN_NOTITIES:
       return {
         ...state,

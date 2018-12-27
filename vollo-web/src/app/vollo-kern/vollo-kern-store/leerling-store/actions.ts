@@ -2,6 +2,7 @@ import { Action } from '@ngrx/store';
 import { Leerling } from '../../groep/leerling.model';
 import { Score } from '../../common/model/score.model';
 import { Notitie } from '../../common/model/notitie.model';
+import { LeerlingHistorieRecord } from '../../common/model/leerling-historie-record.model';
 
 export enum ActionTypes {
   SELECTEREN = '[vollo.kern.leerling] Selecteren',
@@ -12,6 +13,9 @@ export enum ActionTypes {
   OPHALEN_SCORES = '[vollo.kern.leerling] Ophalen scores',
   OPHALEN_SCORES_SUCCES = '[vollo.kern.leerling] Ophalen scores succes',
   OPHALEN_SCORES_MISLUKT = '[vollo.kern.leerling] Ophalen scores mislukt',
+  OPHALEN_HISTORIE = '[vollo.kern.leerling] Ophalen historie',
+  OPHALEN_HISTORIE_SUCCES = '[vollo.kern.leerling] Ophalen historie succes',
+  OPHALEN_HISTORIE_MISLUKT = '[vollo.kern.leerling] Ophalen historie mislukt',
   OPHALEN_NOTITIES = '[vollo.kern.leerling] Ophalen notities',
   OPHALEN_NOTITIES_SUCCES = '[vollo.kern.leerling] Ophalen notities succes',
   OPHALEN_NOTITIES_MISLUKT = '[vollo.kern.leerling] Ophalen notities mislukt',
@@ -61,6 +65,21 @@ export class OphalenScoresMisluktAction implements Action {
   constructor(public foutmelding: string) {}
 }
 
+export class OphalenHistorieAction implements Action {
+  readonly type = ActionTypes.OPHALEN_HISTORIE;
+  constructor(public leerlingId: number) {}
+}
+
+export class OphalenHistorieSuccesAction implements Action {
+  readonly type = ActionTypes.OPHALEN_HISTORIE_SUCCES;
+  constructor(public historie: LeerlingHistorieRecord[]) {}
+}
+
+export class OphalenHistorieMisluktAction implements Action {
+  readonly type = ActionTypes.OPHALEN_HISTORIE_MISLUKT;
+  constructor(public foutmelding: string) {}
+}
+
 export class OphalenNotitiesAction implements Action {
   readonly type = ActionTypes.OPHALEN_NOTITIES;
   constructor(public leerlingId: number) {}
@@ -105,6 +124,9 @@ export type Actions =
   | OphalenScoresAction
   | OphalenScoresSuccesAction
   | OphalenScoresMisluktAction
+  | OphalenHistorieAction
+  | OphalenHistorieSuccesAction
+  | OphalenHistorieMisluktAction
   | OphalenNotitiesAction
   | OphalenNotitiesSuccesAction
   | OphalenNotitiesMisluktAction

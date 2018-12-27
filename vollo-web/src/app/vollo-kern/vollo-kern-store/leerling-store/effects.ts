@@ -10,6 +10,7 @@ import { Score } from '../../common/model/score.model';
 import { Notitie } from '../../common/model/notitie.model';
 import { VolloKernState } from '../index';
 import * as moment from 'moment';
+import { LeerlingHistorieRecord } from '../../common/model/leerling-historie-record.model';
 
 @Injectable()
 export class LeerlingStoreEffects {
@@ -70,6 +71,17 @@ export class LeerlingStoreEffects {
         map(notities => notities.sort((a, b) => moment(b.datum).diff(a.datum))),
         map(notities => new leerlingActions.OphalenNotitiesSuccesAction(notities)),
         catchError(error => observableOf(new leerlingActions.OphalenNotitiesMisluktAction(error)))
+      )
+    )
+  );
+
+  @Effect()
+  ophalenHistorie$: Observable<Action> = this.actions$.pipe(
+    ofType(leerlingActions.ActionTypes.OPHALEN_HISTORIE),
+    mergeMap((action: leerlingActions.OphalenHistorieAction) =>
+      this.http.get<LeerlingHistorieRecord[]>(`/api/leerling/${action.leerlingId}/historie`).pipe(
+        map(historie => new leerlingActions.OphalenHistorieSuccesAction(historie)),
+        catchError(error => observableOf(new leerlingActions.OphalenHistorieMisluktAction(error)))
       )
     )
   );

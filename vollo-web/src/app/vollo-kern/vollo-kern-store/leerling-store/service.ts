@@ -10,6 +10,7 @@ export class LeerlingStoreService {
   leerling$ = this.store.pipe(select(LeerlingStoreSelectors.selectLeerling));
   geselecteerd$ = this.store.pipe(select(LeerlingStoreSelectors.selectGeselecteerd));
   scores$ = this.store.pipe(select(LeerlingStoreSelectors.selectScores));
+  historie$ = this.store.pipe(select(LeerlingStoreSelectors.selectHistorie));
   notities$ = this.store.pipe(select(LeerlingStoreSelectors.selectNotities));
   notitieFormZichtbaar$ = this.store.pipe(
     select(LeerlingStoreSelectors.selectNotitieFormZichtbaar)
@@ -27,6 +28,10 @@ export class LeerlingStoreService {
 
   deselecteren() {
     this.store.dispatch(new leerlingActions.DeselecterenAction());
+  }
+
+  ophalenHistorie(id: number) {
+    this.store.dispatch(new leerlingActions.OphalenHistorieAction(id));
   }
 
   ophalenNotities(id: number) {

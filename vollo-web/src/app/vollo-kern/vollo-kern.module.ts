@@ -23,6 +23,7 @@ import { NotitiesComponent } from './leerling/notities/notities.component';
 import { MarkdownModule } from 'ngx-markdown';
 import { NotitieNiveauOmschrijvingPipe } from './common/pipes/notitie-niveau-omschrijving.pipe';
 import { NotitieNiveauIconComponent } from './leerling/notities/notitie-niveau-icon/notitie-niveau-icon.component';
+import { LeerlingHistorieComponent } from './leerling/leerling-historie/leerling-historie.component';
 
 @NgModule({
   imports: [
@@ -51,7 +52,8 @@ import { NotitieNiveauIconComponent } from './leerling/notities/notitie-niveau-i
     ScoreTabelComponent,
     NotitiesComponent,
     NotitieNiveauOmschrijvingPipe,
-    NotitieNiveauIconComponent
+    NotitieNiveauIconComponent,
+    LeerlingHistorieComponent
   ],
   exports: [
     MijnGroepenComponent,

@@ -14,22 +14,32 @@ vollo-score-grafiek {
 
 .mat-card {
   box-shadow: none;
-}
-
-.mat-card-title {
+  height: calc(100% - 32px);
+  max-height: calc(100% - 32px);
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 
-  span {
+  .mat-card-title {
+    display: flex;
+    flex-direction: row;
+
+    span {
+      flex-grow: 1;
+    }
+
+    button {
+      margin-top: -7px;
+      margin-bottom: -10px;
+    }
+  }
+
+  .mat-card-content {
     flex-grow: 1;
   }
 
-  button {
-    margin-top: -7px;
-    margin-bottom: -10px;
+  .tab-content {
+    //margin-top: 20px;
+    flex-grow: 1;
+    overflow-y: auto;
   }
-}
-
-.tab-content {
-  margin-top: 20px;
 }

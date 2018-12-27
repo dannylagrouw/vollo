@@ -26,6 +26,10 @@ mvn spring-boot:run -Dspring-boot.run.arguments=--genereer-testdata
   - scores in voorgaande jaren
   - meerdere medewerkers per school
   - medewerker/groep historie
+- refactor
+  - /leerling/notities ipv /notities/leerling
+  - views
+  - toetsen koppelen aan scholen
 - scoreoverzicht met alle scores in tabel
 - importeren
 - hibernate validations activeren
