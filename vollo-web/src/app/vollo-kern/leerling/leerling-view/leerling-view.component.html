@@ -1,46 +1,48 @@
-<mat-card class="leerling" [@leerling]="leerling?.id">
-  <mat-card-header>
-    <img mat-card-avatar [src]="fotoData" *ngIf="fotoData">
-    <img mat-card-avatar src="/assets/lege-avatar.png" *ngIf="!fotoData">
-    <mat-card-title>
-      <span>{{leerling?.roepnaam}} {{leerling?.tussenvoegsel}} {{leerling?.achternaam}}</span>
-      <button mat-icon-button (click)="close()"><mat-icon fontIcon="fa-times"></mat-icon></button>
-    </mat-card-title>
-    <mat-card-subtitle>
-      <i class="fa" [ngClass]="{'fa-mars': leerling?.geslacht === 'MAN', 'fa-venus': leerling?.geslacht === 'VROUW', 'fa-genderless': leerling?.geslacht === 'OVERIG'}"></i>
-      {{leerling?.geboortedatum}}
-    </mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <mat-tab-group>
+<div class="leerling mat-body" [@leerling]="leerling?.id">
+  <div class="header">
+    <img [src]="fotoData" *ngIf="fotoData">
+    <img src="/assets/lege-avatar.png" *ngIf="!fotoData">
+    <div class="titles">
+      <div class="title">
+        <span>{{leerling?.roepnaam}} {{leerling?.tussenvoegsel}} {{leerling?.achternaam}}</span>
+        <button mat-icon-button (click)="close()">
+          <mat-icon fontIcon="fa-times"></mat-icon>
+        </button>
+      </div>
+      <div class="subtitle">
+        <i class="fa"
+           [ngClass]="{'fa-mars': leerling?.geslacht === 'MAN', 'fa-venus': leerling?.geslacht === 'VROUW', 'fa-genderless': leerling?.geslacht === 'OVERIG'}"></i>
+        {{leerling?.geboortedatum}}
+      </div>
+    </div>
+  </div>
+  <div class="tabs">
+    <mat-tab-group (selectedIndexChange)="selectedTab = $event">
       <mat-tab label="Scores">
-        <ng-template matTabContent>
-          <div class="tab-content">
-            <vollo-score-grafiek [scores]="scores"></vollo-score-grafiek>
-            <vollo-score-tabel [scores]="scores"></vollo-score-tabel>
-          </div>
-        </ng-template>
       </mat-tab>
       <mat-tab label="Notities">
-        <ng-template matTabContent>
-          <div class="tab-content">
-            <vollo-notities [leerling]="leerling"></vollo-notities>
-          </div>
-        </ng-template>
       </mat-tab>
       <mat-tab label="Info">
-        <ng-template matTabContent>
-          <div class="tab-content">
-            <vollo-leerling-historie [leerling]="leerling"></vollo-leerling-historie>
-            <vollo-leerling-historie [leerling]="leerling"></vollo-leerling-historie>
-            <vollo-leerling-historie [leerling]="leerling"></vollo-leerling-historie>
-          </div>
-        </ng-template>
       </mat-tab>
     </mat-tab-group>
-  </mat-card-content>
-  <mat-card-actions>
+  </div>
+  <div class="content">
+    <div class="tab-content" *ngIf="selectedTab === 0">
+      <vollo-score-grafiek [scores]="scores"></vollo-score-grafiek>
+      <vollo-score-tabel [scores]="scores"></vollo-score-tabel>
+    </div>
+    <div class="tab-content" *ngIf="selectedTab === 1">
+      <vollo-notities [leerling]="leerling"></vollo-notities>
+    </div>
+    <div class="tab-content" *ngIf="selectedTab === 2">
+      <vollo-leerling-historie [leerling]="leerling"></vollo-leerling-historie>
+      <vollo-leerling-historie [leerling]="leerling"></vollo-leerling-historie>
+      <vollo-leerling-historie [leerling]="leerling"></vollo-leerling-historie>
+    </div>
+  </div>
+  <div class="actions">
+    <button mat-icon-button><mat-icon fontIcon="fa-expand-arrows-alt"></mat-icon></button>
     <button mat-icon-button><mat-icon fontIcon="fa-print"></mat-icon></button>
     <button mat-icon-button><mat-icon fontIcon="fa-phone"></mat-icon></button>
-  </mat-card-actions>
-</mat-card>
+  </div>
+</div>

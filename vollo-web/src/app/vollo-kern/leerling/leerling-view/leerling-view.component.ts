@@ -41,6 +41,8 @@ export class LeerlingViewComponent {
 
   @Output() onClose = new EventEmitter();
 
+  selectedTab = 0;
+
   constructor(private sanitizer: DomSanitizer) {}
 
   close() {
