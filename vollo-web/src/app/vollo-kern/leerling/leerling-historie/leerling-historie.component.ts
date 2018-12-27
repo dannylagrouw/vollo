@@ -25,7 +25,7 @@ export class LeerlingHistorieComponent {
     enableFilter: true
   };
   columnDefs = <ColDef[]>[
-    { headerName: 'Omschrijving', field: 'omschrijving', width: 150 },
+    { headerName: 'Tijdslijn', field: 'omschrijving', width: 150 },
     { headerName: 'Begin', field: 'datumBegin', width: 130, sort: 'desc' },
     { headerName: 'Einde', field: 'datumEinde', width: 130 }
   ];

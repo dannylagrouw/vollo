@@ -1,0 +1,12 @@
+.mat-card {
+  margin: 8px 1px 16px 1px;
+}
+
+.mat-card-avatar {
+  font-size: 10px;
+  box-shadow: none;
+
+  .mat-button-wrapper {
+    transform: scaleX(0.8);
+  }
+}

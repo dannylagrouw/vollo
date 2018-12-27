@@ -1,4 +1,5 @@
 import { DomeinObject } from '../common/domein-object.model';
+import { Adres } from '../common/model/adres.model';
 
 export class Leerling extends DomeinObject {
   voornamen: string;
@@ -9,6 +10,7 @@ export class Leerling extends DomeinObject {
   geslacht: 'MAN' | 'VROUW' | 'OVERIG';
   scores: (string | number)[];
   foto: string;
+  adres?: Adres;
 
   // volledigeNaam() {
   //   return this.tussenvoegsel

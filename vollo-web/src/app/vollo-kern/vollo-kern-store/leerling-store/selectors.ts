@@ -4,12 +4,15 @@ import { Leerling } from '../../groep/leerling.model';
 import { Score } from '../../common/model/score.model';
 import { Notitie } from '../../common/model/notitie.model';
 import { LeerlingHistorieRecord } from '../../common/model/leerling-historie-record.model';
+import { Ouder } from '../../common/model/ouder.model';
 
 const getLeerling = (state: State): any => state.leerling;
 
 const getGeselecteerd = (state: State): any => state.geselecteerd;
 
 const getScores = (state: State): any => state.scores;
+
+const getOuders = (state: State): any => state.ouders;
 
 const getHistorie = (state: State): any => state.historie;
 
@@ -34,6 +37,11 @@ export const selectGeselecteerd: MemoizedSelector<object, number> = createSelect
 export const selectScores: MemoizedSelector<object, Score[]> = createSelector(
   selectLeerlingState,
   getScores
+);
+
+export const selectOuders: MemoizedSelector<object, Ouder[]> = createSelector(
+  selectLeerlingState,
+  getOuders
 );
 
 export const selectHistorie: MemoizedSelector<object, LeerlingHistorieRecord[]> = createSelector(

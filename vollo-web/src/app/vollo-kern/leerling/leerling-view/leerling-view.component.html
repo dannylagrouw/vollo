@@ -35,8 +35,18 @@
       <vollo-notities [leerling]="leerling"></vollo-notities>
     </div>
     <div class="tab-content" *ngIf="selectedTab === 2">
-      <vollo-leerling-historie [leerling]="leerling"></vollo-leerling-historie>
-      <vollo-leerling-historie [leerling]="leerling"></vollo-leerling-historie>
+      <mat-card>
+        <mat-card-header>
+          <button mat-mini-fab mat-card-avatar color="primary">ADRES</button>
+          <mat-card-subtitle>
+            {{leerling.adres.straat}} {{leerling.adres.huisnummer}} {{leerling.adres.toevoeging}}
+            <br/>
+            {{leerling.adres.postcode}} {{leerling.adres.plaats}}
+            <span *ngIf="leerling.adres.land !== 'Nederland'">{{leerling.adres.land}}</span>
+          </mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+      <vollo-leerling-ouders [leerling]="leerling"></vollo-leerling-ouders>
       <vollo-leerling-historie [leerling]="leerling"></vollo-leerling-historie>
     </div>
   </div>

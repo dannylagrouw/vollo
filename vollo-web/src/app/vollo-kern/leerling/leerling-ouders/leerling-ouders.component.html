@@ -1,0 +1,11 @@
+<mat-card *ngFor="let ouder of ouders$ | async">
+  <mat-card-header>
+    <button mat-mini-fab mat-card-avatar color="primary">OUDER</button>
+    <mat-card-title>{{ouder.voornaam}} {{ouder.tussenvoegsel}} {{ouder.achternaam}}</mat-card-title>
+    <mat-card-subtitle>
+      {{ouder.adres.straat}} {{ouder.adres.huisnummer}} {{ouder.adres.toevoeging}},
+      {{ouder.adres.postcode}} {{ouder.adres.plaats}}
+      <span *ngIf="ouder.adres.land !== 'Nederland'">{{ouder.adres.land}}</span>
+    </mat-card-subtitle>
+  </mat-card-header>
+</mat-card>

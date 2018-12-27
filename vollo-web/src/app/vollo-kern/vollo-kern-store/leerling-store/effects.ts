@@ -11,6 +11,7 @@ import { Notitie } from '../../common/model/notitie.model';
 import { VolloKernState } from '../index';
 import * as moment from 'moment';
 import { LeerlingHistorieRecord } from '../../common/model/leerling-historie-record.model';
+import { Ouder } from '../../common/model/ouder.model';
 
 @Injectable()
 export class LeerlingStoreEffects {
@@ -59,6 +60,17 @@ export class LeerlingStoreEffects {
       this.http.get<Score[]>(`/api/leerling/${action.leerlingId}/scores`).pipe(
         map(scores => new leerlingActions.OphalenScoresSuccesAction(scores)),
         catchError(error => observableOf(new leerlingActions.OphalenScoresMisluktAction(error)))
+      )
+    )
+  );
+
+  @Effect()
+  ophalenOuders$: Observable<Action> = this.actions$.pipe(
+    ofType(leerlingActions.ActionTypes.OPHALEN_OUDERS),
+    mergeMap((action: leerlingActions.OphalenOudersAction) =>
+      this.http.get<Ouder[]>(`/api/leerling/${action.leerlingId}/ouders`).pipe(
+        map(ouders => new leerlingActions.OphalenOudersSuccesAction(ouders)),
+        catchError(error => observableOf(new leerlingActions.OphalenOudersMisluktAction(error)))
       )
     )
   );

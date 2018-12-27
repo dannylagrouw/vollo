@@ -30,6 +30,7 @@ mvn spring-boot:run -Dspring-boot.run.arguments=--genereer-testdata
   - /leerling/notities ipv /notities/leerling
   - views
   - toetsen koppelen aan scholen
+  - component notities -> leerling-notities
 - scoreoverzicht met alle scores in tabel
 - importeren
 - hibernate validations activeren

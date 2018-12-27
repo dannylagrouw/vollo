@@ -3,6 +3,7 @@ import { Leerling } from '../../groep/leerling.model';
 import { Score } from '../../common/model/score.model';
 import { Notitie } from '../../common/model/notitie.model';
 import { LeerlingHistorieRecord } from '../../common/model/leerling-historie-record.model';
+import { Ouder } from '../../common/model/ouder.model';
 
 export enum ActionTypes {
   SELECTEREN = '[vollo.kern.leerling] Selecteren',
@@ -13,6 +14,9 @@ export enum ActionTypes {
   OPHALEN_SCORES = '[vollo.kern.leerling] Ophalen scores',
   OPHALEN_SCORES_SUCCES = '[vollo.kern.leerling] Ophalen scores succes',
   OPHALEN_SCORES_MISLUKT = '[vollo.kern.leerling] Ophalen scores mislukt',
+  OPHALEN_OUDERS = '[vollo.kern.leerling] Ophalen ouders',
+  OPHALEN_OUDERS_SUCCES = '[vollo.kern.leerling] Ophalen ouders succes',
+  OPHALEN_OUDERS_MISLUKT = '[vollo.kern.leerling] Ophalen ouders mislukt',
   OPHALEN_HISTORIE = '[vollo.kern.leerling] Ophalen historie',
   OPHALEN_HISTORIE_SUCCES = '[vollo.kern.leerling] Ophalen historie succes',
   OPHALEN_HISTORIE_MISLUKT = '[vollo.kern.leerling] Ophalen historie mislukt',
@@ -62,6 +66,21 @@ export class OphalenScoresSuccesAction implements Action {
 
 export class OphalenScoresMisluktAction implements Action {
   readonly type = ActionTypes.OPHALEN_SCORES_MISLUKT;
+  constructor(public foutmelding: string) {}
+}
+
+export class OphalenOudersAction implements Action {
+  readonly type = ActionTypes.OPHALEN_OUDERS;
+  constructor(public leerlingId: number) {}
+}
+
+export class OphalenOudersSuccesAction implements Action {
+  readonly type = ActionTypes.OPHALEN_OUDERS_SUCCES;
+  constructor(public ouders: Ouder[]) {}
+}
+
+export class OphalenOudersMisluktAction implements Action {
+  readonly type = ActionTypes.OPHALEN_OUDERS_MISLUKT;
   constructor(public foutmelding: string) {}
 }
 
@@ -124,6 +143,9 @@ export type Actions =
   | OphalenScoresAction
   | OphalenScoresSuccesAction
   | OphalenScoresMisluktAction
+  | OphalenOudersAction
+  | OphalenOudersSuccesAction
+  | OphalenOudersMisluktAction
   | OphalenHistorieAction
   | OphalenHistorieSuccesAction
   | OphalenHistorieMisluktAction
