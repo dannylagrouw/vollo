@@ -1,0 +1,15 @@
+<div class="contact-line"
+     [ngClass]="{'contact-line-divider': divider}"
+     *ngIf="adres">
+  <div class="contact-line-icon" [ngClass]="{'contact-line-icon-muted': muted}">
+    <mat-icon fontIcon="fa-home" [title]="title"></mat-icon>
+  </div>
+  <div class="contact-line-text">
+    <div [ngClass]="{'contact-line-text-muted': muted}">
+      {{adres.straat}} {{adres.huisnummer}} {{adres.toevoeging}}
+      <br/>
+      {{adres.postcode}} {{adres.plaats}}
+      <span *ngIf="adres.land !== 'Nederland'">{{adres.land}}</span>
+    </div>
+  </div>
+</div>

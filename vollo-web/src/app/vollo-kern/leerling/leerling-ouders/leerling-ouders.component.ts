@@ -16,6 +16,9 @@ export class LeerlingOudersComponent {
     this._leerling = value;
     this.leerlingStoreService.ophalenOuders(value.id);
   }
+  get leerling() {
+    return this._leerling;
+  }
 
   constructor(private leerlingStoreService: LeerlingStoreService) {}
 }

@@ -1,11 +1,13 @@
-<mat-card *ngFor="let ouder of ouders$ | async">
-  <mat-card-header>
-    <button mat-mini-fab mat-card-avatar color="primary">OUDER</button>
-    <mat-card-title>{{ouder.voornaam}} {{ouder.tussenvoegsel}} {{ouder.achternaam}}</mat-card-title>
-    <mat-card-subtitle>
-      {{ouder.adres.straat}} {{ouder.adres.huisnummer}} {{ouder.adres.toevoeging}},
-      {{ouder.adres.postcode}} {{ouder.adres.plaats}}
-      <span *ngIf="ouder.adres.land !== 'Nederland'">{{ouder.adres.land}}</span>
-    </mat-card-subtitle>
-  </mat-card-header>
-</mat-card>
+<ng-container *ngFor="let ouder of ouders$ | async">
+  <div class="contact-line contact-line-divider">
+    <div class="contact-line-icon">
+      <mat-icon svgIcon="parent" title="Ouder van {{leerling.roepnaam}}"></mat-icon>
+    </div>
+    <div class="contact-line-text">
+      {{ouder.voornaam}} {{ouder.tussenvoegsel}} {{ouder.achternaam}}
+    </div>
+  </div>
+  <vollo-contact-adresregel [adres]="ouder.adres" muted="true"></vollo-contact-adresregel>
+  <vollo-contact-emailregel [email]="ouder.email" muted="true"></vollo-contact-emailregel>
+  <vollo-contact-telefoonregel [telefoon]="ouder.telefoon" muted="true"></vollo-contact-telefoonregel>
+</ng-container>

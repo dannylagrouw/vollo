@@ -1,0 +1,12 @@
+<div class="contact-line"
+     [ngClass]="{'contact-line-divider': divider}"
+     *ngIf="telefoon">
+  <div class="contact-line-icon" [ngClass]="{'contact-line-icon-muted': muted}">
+    <mat-icon fontIcon="fa-phone" [title]="title"></mat-icon>
+  </div>
+  <div class="contact-line-text">
+    <div [ngClass]="{'contact-line-text-muted': muted}">
+      {{telefoon}}
+    </div>
+  </div>
+</div>

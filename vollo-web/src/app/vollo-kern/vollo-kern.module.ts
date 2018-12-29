@@ -25,6 +25,7 @@ import { NotitieNiveauOmschrijvingPipe } from './common/pipes/notitie-niveau-oms
 import { NotitieNiveauIconComponent } from './leerling/notities/notitie-niveau-icon/notitie-niveau-icon.component';
 import { LeerlingHistorieComponent } from './leerling/leerling-historie/leerling-historie.component';
 import { LeerlingOudersComponent } from './leerling/leerling-ouders/leerling-ouders.component';
+import { ContactModule } from './contact/contact.module';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import { LeerlingOudersComponent } from './leerling/leerling-ouders/leerling-oud
     AgGridModule.withComponents([]),
     VolloKernStoreModule,
     PlotlyModule,
-    MarkdownModule.forRoot()
+    MarkdownModule.forRoot(),
+    ContactModule
   ],
   declarations: [
     MijnGroepenComponent,

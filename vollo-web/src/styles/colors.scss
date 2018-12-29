@@ -1,0 +1,15 @@
+@import '~@angular/material/theming';
+
+$vollo-primary-palette: $mat-green;
+$vollo-accent-palette: $mat-purple;
+$vollo-warn-palette: $mat-orange;
+
+$vollo-primary-color: map-get($vollo-primary-palette, 600);
+$vollo-primary-color-lighter: map-get($vollo-primary-palette, 100);
+$vollo-primary-color-darker: map-get($vollo-primary-palette, 800);
+$vollo-accent-color: map-get($vollo-accent-palette, A100);
+$vollo-accent-color-lighter: map-get($vollo-accent-palette, 100);
+$vollo-accent-color-darker: map-get($vollo-accent-palette, 500);
+$vollo-warn-color: map-get($vollo-warn-palette, 300);
+$vollo-warn-color-lighter: map-get($vollo-warn-palette, 700);
+$vollo-warn-color-darker: map-get($vollo-warn-palette, 900);

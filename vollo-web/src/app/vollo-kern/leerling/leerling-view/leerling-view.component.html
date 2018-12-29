@@ -5,7 +5,7 @@
     <div class="titles">
       <div class="title">
         <span>{{leerling?.roepnaam}} {{leerling?.tussenvoegsel}} {{leerling?.achternaam}}</span>
-        <button mat-icon-button (click)="close()">
+        <button mat-icon-button color="accent" (click)="close()">
           <mat-icon fontIcon="fa-times"></mat-icon>
         </button>
       </div>
@@ -22,6 +22,8 @@
       </mat-tab>
       <mat-tab label="Notities">
       </mat-tab>
+      <mat-tab label="Historie">
+      </mat-tab>
       <mat-tab label="Info">
       </mat-tab>
     </mat-tab-group>
@@ -35,24 +37,16 @@
       <vollo-notities [leerling]="leerling"></vollo-notities>
     </div>
     <div class="tab-content" *ngIf="selectedTab === 2">
-      <mat-card>
-        <mat-card-header>
-          <button mat-mini-fab mat-card-avatar color="primary">ADRES</button>
-          <mat-card-subtitle>
-            {{leerling.adres.straat}} {{leerling.adres.huisnummer}} {{leerling.adres.toevoeging}}
-            <br/>
-            {{leerling.adres.postcode}} {{leerling.adres.plaats}}
-            <span *ngIf="leerling.adres.land !== 'Nederland'">{{leerling.adres.land}}</span>
-          </mat-card-subtitle>
-        </mat-card-header>
-      </mat-card>
-      <vollo-leerling-ouders [leerling]="leerling"></vollo-leerling-ouders>
       <vollo-leerling-historie [leerling]="leerling"></vollo-leerling-historie>
+    </div>
+    <div class="tab-content" *ngIf="selectedTab === 3">
+      <vollo-contact-adresregel [adres]="leerling.adres"></vollo-contact-adresregel>
+      <vollo-leerling-ouders [leerling]="leerling"></vollo-leerling-ouders>
     </div>
   </div>
   <div class="actions">
-    <button mat-icon-button><mat-icon fontIcon="fa-expand-arrows-alt"></mat-icon></button>
-    <button mat-icon-button><mat-icon fontIcon="fa-print"></mat-icon></button>
-    <button mat-icon-button><mat-icon fontIcon="fa-phone"></mat-icon></button>
+    <button mat-icon-button color="accent"><mat-icon fontIcon="fa-expand-arrows-alt"></mat-icon></button>
+    <button mat-icon-button color="accent"><mat-icon fontIcon="fa-print"></mat-icon></button>
+    <button mat-icon-button color="accent"><mat-icon fontIcon="fa-phone"></mat-icon></button>
   </div>
 </div>
