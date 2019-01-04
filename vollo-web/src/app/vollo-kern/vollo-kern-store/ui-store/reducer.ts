@@ -16,6 +16,16 @@ export function uiReducer(state = initialState, action: Actions): State {
         ...state,
         foutmeldingen: [...state.foutmeldingen, action.melding]
       };
+    case ActionTypes.REQUEST_ERBIJ:
+      return {
+        ...state,
+        aantalUitstaandeRequests: state.aantalUitstaandeRequests + 1
+      };
+    case ActionTypes.REQUEST_ERAF:
+      return {
+        ...state,
+        aantalUitstaandeRequests: state.aantalUitstaandeRequests - 1
+      };
     default:
       return state;
   }

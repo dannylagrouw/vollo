@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { select, Store } from '@ngrx/store';
 import { VolloKernState } from '..';
 import * as uiActions from './actions';
@@ -11,6 +10,9 @@ export class UiStoreService {
   ui$ = this.store.pipe(select(UiStoreSelectors.selectUiState));
   paginatitel$ = this.store.pipe(select(UiStoreSelectors.selectPaginatitel));
   foutmeldingen$ = this.store.pipe(select(UiStoreSelectors.selectFoutmeldingen));
+  aantalUitstaandeRequests$ = this.store.pipe(
+    select(UiStoreSelectors.selectAantalUitstaandeRequests)
+  );
 
   constructor(private store: Store<VolloKernState.State>) {}
 
@@ -20,5 +22,13 @@ export class UiStoreService {
 
   toonFoutmelding(aanleiding: string, foutmelding: string) {
     this.store.dispatch(new uiActions.ToonMeldingAction(new Melding(aanleiding, foutmelding)));
+  }
+
+  requestErbij() {
+    this.store.dispatch(new uiActions.RequestErbijAction());
+  }
+
+  requestEraf() {
+    this.store.dispatch(new uiActions.RequestErafAction());
   }
 }

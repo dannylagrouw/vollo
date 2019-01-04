@@ -42,6 +42,7 @@
         </button>
       </span>
     </mat-toolbar>
+    <mat-progress-bar mode="buffer" [ngClass]="{'zichtbaar': (uitstaandeRequests$ | async)}"></mat-progress-bar>
     <div class="content mat-typography">
       <router-outlet></router-outlet>
     </div>

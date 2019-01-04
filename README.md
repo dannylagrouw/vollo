@@ -23,7 +23,7 @@ mvn spring-boot:run -Dspring-boot.run.arguments=--genereer-testdata
 - ~~notities~~
   - niveau: persoonlijk, collega's, ouders
 - testdata
-  - scores in voorgaande jaren
+  - ~~scores in voorgaande jaren~~
   - meerdere medewerkers per school
   - medewerker/groep historie
 - refactor
@@ -35,7 +35,8 @@ mvn spring-boot:run -Dspring-boot.run.arguments=--genereer-testdata
 - importeren
 - hibernate validations activeren
 - nl locale, date format
-- spinner tijdens requests
+- ~~spinner tijdens requests~~
+- disable scherm tijdens requests?
 - backend: vervang Date door Local/ZonedDates
 - verplaats liquibase.properties naar subprojecten
 

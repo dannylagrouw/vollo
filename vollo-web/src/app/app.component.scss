@@ -17,6 +17,16 @@ mat-sidenav-container {
 
 .content {
   margin: 20px;
-  height: calc(100vh - 104px);
+  height: calc(100vh - 108px);
   overflow-y: scroll;
+}
+
+mat-progress-bar {
+  &:not(.zichtbaar) {
+    visibility: hidden;
+  }
+
+  &.zichtbaar {
+    visibility: visible;
+  }
 }
