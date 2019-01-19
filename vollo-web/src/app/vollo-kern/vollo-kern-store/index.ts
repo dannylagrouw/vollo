@@ -4,5 +4,6 @@ export * from './authenticatie-store';
 export * from './mijn-groepen-store';
 export * from './groep-store';
 export * from './leerling-store';
+export * from './score-store';
 export * from './ui-store';
 export { VolloKernState, VolloKernStoreModule };

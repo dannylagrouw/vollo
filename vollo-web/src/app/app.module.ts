@@ -17,6 +17,7 @@ import { VolloKernStoreModule } from './vollo-kern/vollo-kern-store';
 import { PlotlyModule } from 'angular-plotly.js';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { httpInterceptorProviders } from './vollo-kern/common/http-interceptors';
+import { GroepScoresComponent } from './vollo-kern/score/groep-scores/groep-scores.component';
 
 const appRoutes: Routes = [
   { path: 'inloggen', component: InloggenComponent, data: { titel: 'Inloggen' } },
@@ -25,6 +26,11 @@ const appRoutes: Routes = [
     path: 'mijn-groepen/groep/:groepId',
     component: GroepComponent,
     data: { kruimels: ['mijn-groepen'], titel: 'Groep' }
+  },
+  {
+    path: 'mijn-groepen/scores',
+    component: GroepScoresComponent,
+    data: { kruimels: ['mijn-groepen'], titel: 'Scores' }
   },
   {
     path: '',

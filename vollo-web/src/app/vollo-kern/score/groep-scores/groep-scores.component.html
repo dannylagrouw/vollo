@@ -1,0 +1,7 @@
+<vollo-pagina-titel titel="Scores"></vollo-pagina-titel>
+<ag-grid-angular #agGrid
+                 class="ag-theme-material"
+                 [gridOptions]="gridOptions"
+                 [rowData]="scores$ | async"
+                 [columnDefs]="columnDefs">
+</ag-grid-angular>

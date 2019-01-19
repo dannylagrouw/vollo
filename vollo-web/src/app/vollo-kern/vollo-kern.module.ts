@@ -26,6 +26,7 @@ import { NotitieNiveauIconComponent } from './leerling/notities/notitie-niveau-i
 import { LeerlingHistorieComponent } from './leerling/leerling-historie/leerling-historie.component';
 import { LeerlingOudersComponent } from './leerling/leerling-ouders/leerling-ouders.component';
 import { ContactModule } from './contact/contact.module';
+import { GroepScoresComponent } from './score/groep-scores/groep-scores.component';
 
 @NgModule({
   imports: [
@@ -57,7 +58,8 @@ import { ContactModule } from './contact/contact.module';
     NotitieNiveauOmschrijvingPipe,
     NotitieNiveauIconComponent,
     LeerlingHistorieComponent,
-    LeerlingOudersComponent
+    LeerlingOudersComponent,
+    GroepScoresComponent
   ],
   exports: [
     MijnGroepenComponent,
@@ -65,7 +67,8 @@ import { ContactModule } from './contact/contact.module';
     PaginaTitelComponent,
     GroepComponent,
     KruimelpadComponent,
-    LeerlingContainerComponent
+    LeerlingContainerComponent,
+    GroepScoresComponent
   ],
   providers: [KruimelService]
 })
