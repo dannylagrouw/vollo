@@ -1,0 +1,7 @@
+###
+GET {{base}}/bag-adres?postcode=1011AB&huisnummer=105
+
+###
+GET {{base}}/bag-adres/random/Zwolle/10
+
+###

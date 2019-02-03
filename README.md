@@ -45,12 +45,16 @@ mvn spring-boot:run -Dspring-boot.run.arguments=--genereer-testdata
 cd /usr/local/kafka
 bin/zookeeper-server-start.sh config/zookeeper.properties && bin/kafka-server-start.sh config/server.properties
 
-bin/kafka-topics.sh --zookeeper localhost:2181 --delete --topic nl.vollo.kern.LeerlingOpgehaald
-bin/kafka-topics.sh --zookeeper localhost:2181 --delete --topic nl.vollo.testdata.LeerlingFotoVerkregen
+bin/kafka-topics.sh --zookeeper localhost:2181 --delete --topic nl.vollo.events.kern.LeerlingOpgehaald
+bin/kafka-topics.sh --zookeeper localhost:2181 --delete --topic nl.vollo.events.kern.AdresOpgeslagen
+bin/kafka-topics.sh --zookeeper localhost:2181 --delete --topic nl.vollo.events.testdata.LeerlingFotoVerkregen
 
 bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic nl.vollo.events.kern.LeerlingOpgehaald
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic nl.vollo.events.kern.AdresOpgeslagen
 bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic nl.vollo.events.testdata.LeerlingFotoVerkregen
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic nl.vollo.events.bag.AdresOpgehaald
 bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic nl.vollo.events.kern.LeerlingOpgehaald --from-beginning
+bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic nl.vollo.events.kern.AdresOpgeslagen --from-beginning
 
 #### Kafka config
 
@@ -60,4 +64,24 @@ Toevoegen aan server.properties:
 
 ### PostgreSQL
 
-- `create schema vollo_testdata;`
+```postgresql
+create database vollo;
+create user vollo password 'vollo';
+grant all on database vollo to vollo;
+create schema vollo_testdata;
+create database vollo_bag;
+create user vollo_bag password 'vollo_bag';
+grant all on database  vollo_bag to vollo_bag;
+```
+
+### BAG Import
+
+```bash
+cd vollo-bag
+wget https://data.nlextract.nl/bag/csv/bag-adressen-laatst.csv.zip
+unzip bag-adressen-laatst.csv.zip
+```
+
+```postgresql
+COPY bag_adres FROM 'bagadres.csv' DELIMITER ';' CSV HEADER;
+```

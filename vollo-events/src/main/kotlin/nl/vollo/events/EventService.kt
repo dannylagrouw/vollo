@@ -8,9 +8,8 @@ import org.springframework.stereotype.Service
 class EventService {
 
     @Autowired
-    private lateinit var kafkaTemplate: KafkaTemplate<String, Event>;
+    private lateinit var kafkaTemplate: KafkaTemplate<String, Event>
 
-    fun <T: Event> send(event: T) {
+    fun <T: Event> send(event: T) =
         kafkaTemplate.send(event._topic, event)
-    }
 }

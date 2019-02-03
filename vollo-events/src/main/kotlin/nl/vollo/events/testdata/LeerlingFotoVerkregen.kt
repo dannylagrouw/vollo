@@ -2,8 +2,7 @@ package nl.vollo.events.testdata
 
 import nl.vollo.events.Event
 
-class LeerlingFotoVerkregen() : Event {
-    override val _topic = TOPIC
+class LeerlingFotoVerkregen : Event(TOPIC) {
     var id: Long? = null
     var foto: ByteArray? = null
 
