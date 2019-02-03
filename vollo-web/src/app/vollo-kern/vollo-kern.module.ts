@@ -27,6 +27,8 @@ import { LeerlingHistorieComponent } from './leerling/leerling-historie/leerling
 import { LeerlingOudersComponent } from './leerling/leerling-ouders/leerling-ouders.component';
 import { ContactModule } from './contact/contact.module';
 import { GroepScoresComponent } from './score/groep-scores/groep-scores.component';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { MapViewComponent } from './map/map-view/map-view.component';
 
 @NgModule({
   imports: [
@@ -41,7 +43,8 @@ import { GroepScoresComponent } from './score/groep-scores/groep-scores.componen
     VolloKernStoreModule,
     PlotlyModule,
     MarkdownModule.forRoot(),
-    ContactModule
+    ContactModule,
+    LeafletModule.forRoot()
   ],
   declarations: [
     MijnGroepenComponent,
@@ -59,7 +62,8 @@ import { GroepScoresComponent } from './score/groep-scores/groep-scores.componen
     NotitieNiveauIconComponent,
     LeerlingHistorieComponent,
     LeerlingOudersComponent,
-    GroepScoresComponent
+    GroepScoresComponent,
+    MapViewComponent
   ],
   exports: [
     MijnGroepenComponent,

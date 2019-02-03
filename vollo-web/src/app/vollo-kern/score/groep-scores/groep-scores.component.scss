@@ -1,4 +1,13 @@
 ag-grid-angular {
   width: 100%;
-  height: calc(100vh - 50px);
+  height: calc(50vh - 54px);
+
+  &.volledig {
+    height: calc(100vh - 157px);
+  }
+}
+
+.onderste-helft {
+  height: calc(50vh - 103px);
+  display: block;
 }

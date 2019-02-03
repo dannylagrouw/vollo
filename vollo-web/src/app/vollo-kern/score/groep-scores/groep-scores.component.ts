@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ScoreStoreService } from '../../vollo-kern-store/score-store';
-import { GridOptions, ColDef } from 'ag-grid';
+import { GridOptions, ColDef, FilterChangedEvent } from 'ag-grid';
+import { GroepScore } from '../../common/model/groep-score.model';
 
 @Component({
   selector: 'vollo-groep-scores',
@@ -9,11 +10,18 @@ import { GridOptions, ColDef } from 'ag-grid';
 })
 export class GroepScoresComponent {
   scores$ = this.scoreStoreService.scores$;
+  filteredScores: GroepScore[] = [];
+  tabIndex: number = 0;
 
   gridOptions = <GridOptions>{
     enableColResize: true,
     enableSorting: true,
-    enableFilter: true
+    enableFilter: true,
+    onFilterChanged: (event: FilterChangedEvent) => {
+      this.filteredScores = (<any>event.api.getModel()).rootNode.childrenAfterFilter.map(
+        n => n.data
+      );
+    }
   };
   columnDefs = <ColDef[]>[
     { headerName: 'Achternaam', field: 'achternaam', width: 170 },
@@ -24,5 +32,9 @@ export class GroepScoresComponent {
 
   constructor(private scoreStoreService: ScoreStoreService) {
     this.scoreStoreService.ophalen();
+  }
+
+  setTabIndex(index: number) {
+    this.tabIndex = index;
   }
 }

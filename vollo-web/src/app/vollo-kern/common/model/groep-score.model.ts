@@ -15,4 +15,6 @@ export class GroepScore extends DomeinObject {
   leerlingId?: number;
   geslacht?: Geslacht;
   geboortedatum?: Date;
+  latitude?: number;
+  longitude?: number;
 }

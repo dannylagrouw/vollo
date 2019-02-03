@@ -1,7 +1,18 @@
 <vollo-pagina-titel titel="Scores"></vollo-pagina-titel>
 <ag-grid-angular #agGrid
                  class="ag-theme-material"
+                 [ngClass]="{'volledig': tabIndex === 0}"
                  [gridOptions]="gridOptions"
                  [rowData]="scores$ | async"
                  [columnDefs]="columnDefs">
 </ag-grid-angular>
+<vollo-map-view *ngIf="tabIndex === 1"
+                [scores]="filteredScores"
+                class="onderste-helft"></vollo-map-view>
+<mat-tab-group headerPosition="below"
+               (selectedIndexChange)="setTabIndex($event)">
+  <mat-tab label="Verbergen"></mat-tab>
+  <mat-tab label="Toon op kaart">
+  </mat-tab>
+  <mat-tab label="Grafiek"></mat-tab>
+</mat-tab-group>
