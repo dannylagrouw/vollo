@@ -20,5 +20,7 @@ export class InloggenComponent implements OnInit {
 
   inloggen() {
     this.authenticatieStoreService.inloggen(this.form.gebruikersnaam, this.form.wachtwoord);
+    this.form.gebruikersnaam = '';
+    this.form.wachtwoord = '';
   }
 }

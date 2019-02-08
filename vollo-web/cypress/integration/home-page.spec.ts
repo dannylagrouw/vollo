@@ -1,3 +1,5 @@
+/// <reference types="Cypress" />
+
 describe('Home Page', () => {
   beforeEach(() => {
     cy.visit('http://localhost:4200');
@@ -13,6 +15,13 @@ describe('Home Page', () => {
     expect(cy.contains('Welkom terug'));
   });
 
+  it('moet foutmelding tonen bij onjuist inloggen', () => {
+    inloggen('mbestaatniet');
+
+    expect(cy.contains('Onjuiste gebruikersnaam en/of wachtwoord'));
+    cy.get('[aria-label="Gebruikermenu"]').should('be.disabled');
+  });
+
   it('moet gebruikermenu tonen', () => {
     inloggen('m1');
 
@@ -20,6 +29,7 @@ describe('Home Page', () => {
 
     expect(cy.contains('Ingelogd als m1'));
     expect(cy.contains('Uitloggen'));
+    cy.get('[aria-label="Gebruikermenu"]').should('not.be.disabled');
   });
 
   it('moet uitloggen', () => {

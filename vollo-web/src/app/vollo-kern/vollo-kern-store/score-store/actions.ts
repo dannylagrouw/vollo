@@ -1,5 +1,7 @@
 import { Action } from '@ngrx/store';
 import { GroepScore } from '../../common/model/groep-score.model';
+import { ErrorAction } from '../../common/error-action.model';
+import { HttpErrorResponse } from '@angular/common/http';
 
 export enum ActionTypes {
   OPHALEN = '[vollo.kern.score] Ophalen',
@@ -17,9 +19,11 @@ export class OphalenSuccesAction implements Action {
   constructor(public scores: GroepScore[]) {}
 }
 
-export class OphalenMisluktAction implements Action {
+export class OphalenMisluktAction extends ErrorAction {
   readonly type = ActionTypes.OPHALEN_MISLUKT;
-  constructor(public foutmelding: string) {}
+  constructor(public fout: HttpErrorResponse) {
+    super();
+  }
 }
 
 export type Actions = OphalenAction | OphalenSuccesAction | OphalenMisluktAction;

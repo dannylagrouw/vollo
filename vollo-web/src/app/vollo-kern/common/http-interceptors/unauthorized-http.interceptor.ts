@@ -20,7 +20,7 @@ export class UnauthorizedHttpInterceptor implements HttpInterceptor {
         if (error.status === 401) {
           this.router.navigate(['/inloggen']);
         }
-        return throwError('backend comm error');
+        return throwError(error);
       })
     );
   }

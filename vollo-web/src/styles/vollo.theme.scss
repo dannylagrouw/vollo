@@ -16,7 +16,8 @@ $general-typography: mat-typography-config(
 
 $vollo-primary: mat-palette($mat-green, 600);
 $vollo-accent: mat-palette($mat-purple, A100);
-$vollo-warn: mat-palette($mat-orange, 900);
+$vollo-warn: mat-palette($mat-orange, 500);
+$vollo-error: mat-palette($mat-orange, 900);
 
 $vollo-theme: mat-light-theme($vollo-primary, $vollo-accent, $vollo-warn);
 

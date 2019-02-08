@@ -1,4 +1,6 @@
 import { Action } from '@ngrx/store';
+import { ErrorAction } from '../../common/error-action.model';
+import { HttpErrorResponse } from '@angular/common/http';
 
 export enum ActionTypes {
   INLOGGEN = '[vollo.kern.authenticatie] Inloggen',
@@ -17,9 +19,11 @@ export class InloggenSuccesAction implements Action {
   constructor(public gebruikersnaam: string) {}
 }
 
-export class InloggenMisluktAction implements Action {
+export class InloggenMisluktAction extends ErrorAction {
   readonly type = ActionTypes.INLOGGEN_MISLUKT;
-  constructor(public foutmelding: string) {}
+  constructor(public fout: HttpErrorResponse) {
+    super();
+  }
 }
 
 export class UitloggenAction implements Action {

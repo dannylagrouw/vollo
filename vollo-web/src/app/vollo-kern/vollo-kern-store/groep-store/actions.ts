@@ -1,5 +1,7 @@
 import { Action } from '@ngrx/store';
 import { Groep } from '../../groep/groep.model';
+import { ErrorAction } from '../../common/error-action.model';
+import { HttpErrorResponse } from '@angular/common/http';
 
 export enum ActionTypes {
   OPHALEN = '[vollo.kern.groep] Ophalen',
@@ -17,9 +19,11 @@ export class OphalenSuccesAction implements Action {
   constructor(public groep: Groep) {}
 }
 
-export class OphalenMisluktAction implements Action {
+export class OphalenMisluktAction extends ErrorAction {
   readonly type = ActionTypes.OPHALEN_MISLUKT;
-  constructor(public foutmelding: string) {}
+  constructor(public fout: HttpErrorResponse) {
+    super();
+  }
 }
 
 export type Actions = OphalenAction | OphalenSuccesAction | OphalenMisluktAction;

@@ -4,6 +4,8 @@ import { Score } from '../../common/model/score.model';
 import { Notitie } from '../../common/model/notitie.model';
 import { LeerlingHistorieRecord } from '../../common/model/leerling-historie-record.model';
 import { Ouder } from '../../common/model/ouder.model';
+import { ErrorAction } from '../../common/error-action.model';
+import { HttpErrorResponse } from '@angular/common/http';
 
 export enum ActionTypes {
   SELECTEREN = '[vollo.kern.leerling] Selecteren',
@@ -49,9 +51,11 @@ export class OphalenSuccesAction implements Action {
   constructor(public leerling: Leerling) {}
 }
 
-export class OphalenMisluktAction implements Action {
+export class OphalenMisluktAction extends ErrorAction {
   readonly type = ActionTypes.OPHALEN_MISLUKT;
-  constructor(public foutmelding: string) {}
+  constructor(public fout: HttpErrorResponse) {
+    super();
+  }
 }
 
 export class OphalenScoresAction implements Action {
@@ -64,9 +68,11 @@ export class OphalenScoresSuccesAction implements Action {
   constructor(public scores: Score[]) {}
 }
 
-export class OphalenScoresMisluktAction implements Action {
+export class OphalenScoresMisluktAction extends ErrorAction {
   readonly type = ActionTypes.OPHALEN_SCORES_MISLUKT;
-  constructor(public foutmelding: string) {}
+  constructor(public fout: HttpErrorResponse) {
+    super();
+  }
 }
 
 export class OphalenOudersAction implements Action {
@@ -79,9 +85,11 @@ export class OphalenOudersSuccesAction implements Action {
   constructor(public ouders: Ouder[]) {}
 }
 
-export class OphalenOudersMisluktAction implements Action {
+export class OphalenOudersMisluktAction extends ErrorAction {
   readonly type = ActionTypes.OPHALEN_OUDERS_MISLUKT;
-  constructor(public foutmelding: string) {}
+  constructor(public fout: HttpErrorResponse) {
+    super();
+  }
 }
 
 export class OphalenHistorieAction implements Action {
@@ -94,9 +102,11 @@ export class OphalenHistorieSuccesAction implements Action {
   constructor(public historie: LeerlingHistorieRecord[]) {}
 }
 
-export class OphalenHistorieMisluktAction implements Action {
+export class OphalenHistorieMisluktAction extends ErrorAction {
   readonly type = ActionTypes.OPHALEN_HISTORIE_MISLUKT;
-  constructor(public foutmelding: string) {}
+  constructor(public fout: HttpErrorResponse) {
+    super();
+  }
 }
 
 export class OphalenNotitiesAction implements Action {
@@ -109,9 +119,11 @@ export class OphalenNotitiesSuccesAction implements Action {
   constructor(public notities: Notitie[]) {}
 }
 
-export class OphalenNotitiesMisluktAction implements Action {
+export class OphalenNotitiesMisluktAction extends ErrorAction {
   readonly type = ActionTypes.OPHALEN_NOTITIES_MISLUKT;
-  constructor(public foutmelding: string) {}
+  constructor(public fout: HttpErrorResponse) {
+    super();
+  }
 }
 
 export class OpslaanNotitieAction implements Action {
@@ -124,9 +136,11 @@ export class OpslaanNotitieSuccesAction implements Action {
   constructor(public notitie: Notitie) {}
 }
 
-export class OpslaanNotitieMisluktAction implements Action {
+export class OpslaanNotitieMisluktAction extends ErrorAction {
   readonly type = ActionTypes.OPSLAAN_NOTITIE_MISLUKT;
-  constructor(public foutmelding: string) {}
+  constructor(public fout: HttpErrorResponse) {
+    super();
+  }
 }
 
 export class NotitieFormZichtbaarAction implements Action {

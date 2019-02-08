@@ -12,7 +12,8 @@ import {
   MatTabsModule,
   MatListModule,
   MatButtonToggleModule,
-  MatProgressBarModule
+  MatProgressBarModule,
+  MatSnackBarModule
 } from '@angular/material';
 
 @NgModule({
@@ -29,7 +30,8 @@ import {
     MatTabsModule,
     MatListModule,
     MatButtonToggleModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatSnackBarModule
   ],
   exports: [
     MatButtonModule,
@@ -44,7 +46,8 @@ import {
     MatTabsModule,
     MatListModule,
     MatButtonToggleModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatSnackBarModule
   ]
 })
 export class VolloMaterialModule {}

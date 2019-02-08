@@ -5,7 +5,8 @@
 
 $primary-color: map-get($vollo-primary, 600);
 $accent-color: map-get($vollo-accent, A100);
-$warn-color: map-get($vollo-warn, 900);
+$warn-color: map-get($vollo-warn, 500);
+$error-color: map-get($vollo-error, 900);
 $font-family: 'Muli', sans-serif;
 $secondary-font-family: 'Muli', sans-serif;
 $icons-path: '../node_modules/ag-grid/src/styles/material-icons/';
@@ -37,6 +38,15 @@ $icons-path: '../node_modules/ag-grid/src/styles/material-icons/';
 
 form.ng-invalid.ng-touched {
   .mat-button-toggle-group.ng-invalid {
-    border-color: $warn-color;
+    border-color: $error-color;
+  }
+}
+
+.mat-snack-bar-container {
+  &.error {
+    color: $error-color;
+  }
+  &.warn {
+    color: $warn-color;
   }
 }
