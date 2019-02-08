@@ -1,23 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Actions, Effect, ofType } from '@ngrx/effects';
-import { Action } from '@ngrx/store';
-import { Observable, of as observableOf } from 'rxjs';
-import { catchError, map, mergeMap } from 'rxjs/operators';
+import { Actions, Effect } from '@ngrx/effects';
 import * as authenticatieActions from './actions';
-import { InloggenService } from '../../../service/inloggen.service';
+import { AbstractEffects } from '../../common/abstract-effects.model';
+import { HttpClient } from '@angular/common/http';
+import { inloggen } from '../../common/api-clients/inloggen.client';
 
 @Injectable()
-export class AuthenticatieStoreEffects {
-  constructor(private inloggenService: InloggenService, private actions$: Actions) {}
+export class AuthenticatieStoreEffects extends AbstractEffects {
+  constructor(private http: HttpClient, private actions$: Actions) {
+    super(http);
+  }
 
   @Effect()
-  inloggen$: Observable<Action> = this.actions$.pipe(
-    ofType(authenticatieActions.ActionTypes.INLOGGEN),
-    mergeMap((action: authenticatieActions.InloggenAction) =>
-      this.inloggenService.inloggen(action.gebruikersnaam, action.wachtwoord).pipe(
-        map(() => new authenticatieActions.InloggenSuccesAction(action.gebruikersnaam)),
-        catchError(error => observableOf(new authenticatieActions.InloggenMisluktAction(error)))
-      )
-    )
-  );
+  inloggen$ = this.createEffect(this.actions$, authenticatieActions.ActionTypes.INLOGGEN, inloggen);
 }

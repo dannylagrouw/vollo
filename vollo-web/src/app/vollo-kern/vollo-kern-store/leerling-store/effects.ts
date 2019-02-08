@@ -1,25 +1,30 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Action, Store } from '@ngrx/store';
-import { Observable, of as observableOf } from 'rxjs';
-import { catchError, delay, filter, map, mergeMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { delay, filter, map, mergeMap } from 'rxjs/operators';
 import * as leerlingActions from './actions';
 import { HttpClient } from '@angular/common/http';
-import { fromServer, Leerling } from '../../groep/leerling.model';
-import { Score } from '../../common/model/score.model';
-import { Notitie } from '../../common/model/notitie.model';
 import { VolloKernState } from '../index';
-import * as moment from 'moment';
-import { LeerlingHistorieRecord } from '../../common/model/leerling-historie-record.model';
-import { Ouder } from '../../common/model/ouder.model';
+import { AbstractEffects } from '../../common/abstract-effects.model';
+import {
+  ophalenHistorie,
+  ophalenLeerling,
+  ophalenNotities,
+  ophalenOuders,
+  ophalenScores,
+  opslaanNotitie
+} from '../../common/api-clients/leerling.client';
 
 @Injectable()
-export class LeerlingStoreEffects {
+export class LeerlingStoreEffects extends AbstractEffects {
   constructor(
     private http: HttpClient,
     private actions$: Actions,
     private store: Store<VolloKernState.State>
-  ) {}
+  ) {
+    super(http);
+  }
 
   @Effect()
   selecteren$: Observable<Action> = this.actions$.pipe(
@@ -31,16 +36,7 @@ export class LeerlingStoreEffects {
   );
 
   @Effect()
-  ophalen$: Observable<Action> = this.actions$.pipe(
-    ofType(leerlingActions.ActionTypes.OPHALEN),
-    mergeMap((action: leerlingActions.OphalenAction) =>
-      this.http.get<Leerling>(`/api/leerling/${action.id}`).pipe(
-        map(leerling => fromServer(leerling)),
-        map(leerling => new leerlingActions.OphalenSuccesAction(leerling)),
-        catchError(error => observableOf(new leerlingActions.OphalenMisluktAction(error)))
-      )
-    )
-  );
+  ophalen$ = this.createEffect(this.actions$, leerlingActions.ActionTypes.OPHALEN, ophalenLeerling);
 
   @Effect()
   ophalenSucces$: Observable<Action> = this.actions$.pipe(
@@ -54,58 +50,37 @@ export class LeerlingStoreEffects {
   );
 
   @Effect()
-  ophalenScores$: Observable<Action> = this.actions$.pipe(
-    ofType(leerlingActions.ActionTypes.OPHALEN_SCORES),
-    mergeMap((action: leerlingActions.OphalenScoresAction) =>
-      this.http.get<Score[]>(`/api/leerling/${action.leerlingId}/scores`).pipe(
-        map(scores => new leerlingActions.OphalenScoresSuccesAction(scores)),
-        catchError(error => observableOf(new leerlingActions.OphalenScoresMisluktAction(error)))
-      )
-    )
+  ophalenScores$ = this.createEffect(
+    this.actions$,
+    leerlingActions.ActionTypes.OPHALEN_SCORES,
+    ophalenScores
   );
 
   @Effect()
-  ophalenOuders$: Observable<Action> = this.actions$.pipe(
-    ofType(leerlingActions.ActionTypes.OPHALEN_OUDERS),
-    mergeMap((action: leerlingActions.OphalenOudersAction) =>
-      this.http.get<Ouder[]>(`/api/leerling/${action.leerlingId}/ouders`).pipe(
-        map(ouders => new leerlingActions.OphalenOudersSuccesAction(ouders)),
-        catchError(error => observableOf(new leerlingActions.OphalenOudersMisluktAction(error)))
-      )
-    )
+  ophalenOuders$ = this.createEffect(
+    this.actions$,
+    leerlingActions.ActionTypes.OPHALEN_OUDERS,
+    ophalenOuders
   );
 
   @Effect()
-  ophalenNotities$: Observable<Action> = this.actions$.pipe(
-    ofType(leerlingActions.ActionTypes.OPHALEN_NOTITIES),
-    mergeMap((action: leerlingActions.OphalenNotitiesAction) =>
-      this.http.get<Notitie[]>(`/api/notitie/leerling/${action.leerlingId}`).pipe(
-        map(notities => notities.sort((a, b) => moment(b.datum).diff(a.datum))),
-        map(notities => new leerlingActions.OphalenNotitiesSuccesAction(notities)),
-        catchError(error => observableOf(new leerlingActions.OphalenNotitiesMisluktAction(error)))
-      )
-    )
+  ophalenNotities$ = this.createEffect(
+    this.actions$,
+    leerlingActions.ActionTypes.OPHALEN_NOTITIES,
+    ophalenNotities
   );
 
   @Effect()
-  ophalenHistorie$: Observable<Action> = this.actions$.pipe(
-    ofType(leerlingActions.ActionTypes.OPHALEN_HISTORIE),
-    mergeMap((action: leerlingActions.OphalenHistorieAction) =>
-      this.http.get<LeerlingHistorieRecord[]>(`/api/leerling/${action.leerlingId}/historie`).pipe(
-        map(historie => new leerlingActions.OphalenHistorieSuccesAction(historie)),
-        catchError(error => observableOf(new leerlingActions.OphalenHistorieMisluktAction(error)))
-      )
-    )
+  ophalenHistorie$ = this.createEffect(
+    this.actions$,
+    leerlingActions.ActionTypes.OPHALEN_HISTORIE,
+    ophalenHistorie
   );
 
   @Effect()
-  opslaanNotitie$: Observable<Action> = this.actions$.pipe(
-    ofType(leerlingActions.ActionTypes.OPSLAAN_NOTITIE),
-    mergeMap((action: leerlingActions.OpslaanNotitieAction) =>
-      this.http.post<Notitie>(`/api/notitie/leerling/${action.leerlingId}`, action.notitie).pipe(
-        map(notitie => new leerlingActions.OpslaanNotitieSuccesAction(notitie)),
-        catchError(error => observableOf(new leerlingActions.OpslaanNotitieMisluktAction(error)))
-      )
-    )
+  opslaanNotitie$ = this.createEffect(
+    this.actions$,
+    leerlingActions.ActionTypes.OPSLAAN_NOTITIE,
+    opslaanNotitie
   );
 }

@@ -1,24 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Actions, Effect, ofType } from '@ngrx/effects';
-import { Action } from '@ngrx/store';
-import { Observable, of as observableOf } from 'rxjs';
-import { catchError, map, mergeMap } from 'rxjs/operators';
+import { Actions, Effect } from '@ngrx/effects';
 import * as scoreActions from './actions';
 import { HttpClient } from '@angular/common/http';
-import { GroepScore } from '../../common/model/groep-score.model';
+import { AbstractEffects } from '../../common/abstract-effects.model';
+import { ophalenScores } from '../../common/api-clients/score.client';
 
 @Injectable()
-export class ScoreStoreEffects {
-  constructor(private http: HttpClient, private actions$: Actions) {}
+export class ScoreStoreEffects extends AbstractEffects {
+  constructor(private http: HttpClient, private actions$: Actions) {
+    super(http);
+  }
 
   @Effect()
-  ophalen$: Observable<Action> = this.actions$.pipe(
-    ofType(scoreActions.ActionTypes.OPHALEN),
-    mergeMap((action: scoreActions.OphalenAction) =>
-      this.http.get<GroepScore[]>(`/api/score`).pipe(
-        map(scores => new scoreActions.OphalenSuccesAction(scores)),
-        catchError(error => observableOf(new scoreActions.OphalenMisluktAction(error)))
-      )
-    )
-  );
+  ophalen$ = this.createEffect(this.actions$, scoreActions.ActionTypes.OPHALEN, ophalenScores);
 }

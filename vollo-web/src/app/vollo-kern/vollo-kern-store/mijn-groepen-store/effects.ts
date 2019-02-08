@@ -1,24 +1,20 @@
 import { Injectable } from '@angular/core';
-import { Actions, Effect, ofType } from '@ngrx/effects';
-import { Action } from '@ngrx/store';
-import { Observable, of as observableOf } from 'rxjs';
-import { catchError, map, mergeMap } from 'rxjs/operators';
+import { Actions, Effect } from '@ngrx/effects';
 import * as mijnGroepenActions from './actions';
 import { HttpClient } from '@angular/common/http';
-import { Groep } from '../../mijn-groepen/groep.model';
+import { AbstractEffects } from '../../common/abstract-effects.model';
+import { ophalenMijnGroepen } from '../../common/api-clients/mijn-groepen.client';
 
 @Injectable()
-export class MijnGroepenStoreEffects {
-  constructor(private http: HttpClient, private actions$: Actions) {}
+export class MijnGroepenStoreEffects extends AbstractEffects {
+  constructor(private http: HttpClient, private actions$: Actions) {
+    super(http);
+  }
 
   @Effect()
-  ophalen$: Observable<Action> = this.actions$.pipe(
-    ofType(mijnGroepenActions.ActionTypes.OPHALEN),
-    mergeMap((action: mijnGroepenActions.OphalenAction) =>
-      this.http.get<Groep[]>('/api/mijn-groepen').pipe(
-        map(groepen => new mijnGroepenActions.OphalenSuccesAction(groepen)),
-        catchError(error => observableOf(new mijnGroepenActions.OphalenMisluktAction(error)))
-      )
-    )
+  ophalen$ = this.createEffect(
+    this.actions$,
+    mijnGroepenActions.ActionTypes.OPHALEN,
+    ophalenMijnGroepen
   );
 }
