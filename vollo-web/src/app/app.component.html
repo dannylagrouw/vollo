@@ -32,12 +32,17 @@
             <mat-icon fontSet="far" fontIcon="fa-user"></mat-icon>
             Ingelogd als {{(authenticatie$ | async).gebruikersnaam}}
           </button>
-          <button mat-menu-item>
+          <button mat-menu-item
+                  aria-label="Uitloggen"
+                  (click)="uitloggen()">
               <mat-icon fontIcon="fa-sign-out-alt"></mat-icon>
               Uitloggen
           </button>
         </mat-menu>
-        <button mat-icon-button [disabled]="!(authenticatie$ | async).ingelogd" [matMenuTriggerFor]="userMenu">
+        <button mat-icon-button
+                [disabled]="!(authenticatie$ | async).ingelogd"
+                [matMenuTriggerFor]="userMenu"
+                aria-label="Gebruikermenu">
           <mat-icon fontSet="far" fontIcon="fa-user"></mat-icon>
         </button>
       </span>

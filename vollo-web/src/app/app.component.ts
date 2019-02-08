@@ -42,4 +42,8 @@ export class AppComponent {
       .pipe(delay(0))
       .subscribe(n => (this.uitstaandeRequests = n > 0));
   }
+
+  uitloggen() {
+    this.authenticatieStoreService.uitloggen();
+  }
 }

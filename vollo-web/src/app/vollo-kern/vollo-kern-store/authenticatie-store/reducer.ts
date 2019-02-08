@@ -12,6 +12,7 @@ export function authenticatieReducer(state = initialState, action: Actions): Sta
         ingelogd: true
       };
     case ActionTypes.INLOGGEN_MISLUKT:
+    case ActionTypes.UITLOGGEN:
       return {
         ...state,
         gebruikersnaam: null,

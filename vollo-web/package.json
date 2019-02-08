@@ -9,7 +9,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "precommit": "pretty-quick --staged"
+    "precommit": "pretty-quick --staged",
+    "cypress": "tsc --watch --project cypress/tsconfig.json & cypress open",
+    "cypress:ci": "tsc --project cypress/tsconfig.json & cypress open"
   },
   "private": true,
   "dependencies": {
@@ -54,6 +56,7 @@
     "@types/leaflet": "^1.4.0",
     "@types/node": "^6.0.114",
     "codelyzer": "^4.5.0",
+    "cypress": "^3.1.5",
     "husky": "^0.14.3",
     "jasmine-core": "~2.8.0",
     "jasmine-spec-reporter": "~4.2.1",

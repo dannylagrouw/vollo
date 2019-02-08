@@ -3,7 +3,8 @@ import { Action } from '@ngrx/store';
 export enum ActionTypes {
   INLOGGEN = '[vollo.kern.authenticatie] Inloggen',
   INLOGGEN_SUCCES = '[vollo.kern.authenticatie] Inloggen succes',
-  INLOGGEN_MISLUKT = '[vollo.kern.authenticatie] Inloggen mislukt'
+  INLOGGEN_MISLUKT = '[vollo.kern.authenticatie] Inloggen mislukt',
+  UITLOGGEN = '[vollo.kern.authenticatie] Uitloggen'
 }
 
 export class InloggenAction implements Action {
@@ -21,4 +22,13 @@ export class InloggenMisluktAction implements Action {
   constructor(public foutmelding: string) {}
 }
 
-export type Actions = InloggenAction | InloggenSuccesAction | InloggenMisluktAction;
+export class UitloggenAction implements Action {
+  readonly type = ActionTypes.UITLOGGEN;
+  constructor() {}
+}
+
+export type Actions =
+  | InloggenAction
+  | InloggenSuccesAction
+  | InloggenMisluktAction
+  | UitloggenAction;

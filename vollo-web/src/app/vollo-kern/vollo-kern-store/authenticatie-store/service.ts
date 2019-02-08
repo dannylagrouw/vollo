@@ -13,4 +13,8 @@ export class AuthenticatieStoreService {
   inloggen(gebruikersnaam: string, wachtwoord: string) {
     this.store.dispatch(new authenticatieActions.InloggenAction(gebruikersnaam, wachtwoord));
   }
+
+  uitloggen() {
+    this.store.dispatch(new authenticatieActions.UitloggenAction());
+  }
 }

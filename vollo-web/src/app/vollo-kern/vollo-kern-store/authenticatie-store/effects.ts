@@ -4,6 +4,7 @@ import * as authenticatieActions from './actions';
 import { AbstractEffects } from '../../common/abstract-effects.model';
 import { HttpClient } from '@angular/common/http';
 import { inloggen } from '../../common/api-clients/inloggen.client';
+import { uitloggen } from '../../common/api-clients/gebruiker.client';
 
 @Injectable()
 export class AuthenticatieStoreEffects extends AbstractEffects {
@@ -13,4 +14,11 @@ export class AuthenticatieStoreEffects extends AbstractEffects {
 
   @Effect()
   inloggen$ = this.createEffect(this.actions$, authenticatieActions.ActionTypes.INLOGGEN, inloggen);
+
+  @Effect()
+  uitloggen$ = this.createEffect(
+    this.actions$,
+    authenticatieActions.ActionTypes.UITLOGGEN,
+    uitloggen
+  );
 }

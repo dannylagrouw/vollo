@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "baseUrl": "../node_modules",
+    "target": "es5",
+    "lib": ["es5", "dom"],
+    "types": ["cypress"],
+    "outDir": "build",
+    "sourceMap": false,
+    "skipLibCheck": true,
+    "listEmittedFiles": true,
+    "listFiles": true
+  },
+  "include": ["integration/**/*.spec.ts"]
+}
