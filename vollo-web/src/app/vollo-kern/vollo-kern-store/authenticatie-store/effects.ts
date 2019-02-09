@@ -5,20 +5,31 @@ import { AbstractEffects } from '../../common/abstract-effects.model';
 import { HttpClient } from '@angular/common/http';
 import { inloggen } from '../../common/api-clients/inloggen.client';
 import { uitloggen } from '../../common/api-clients/gebruiker.client';
+import { tap } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
 
 @Injectable()
 export class AuthenticatieStoreEffects extends AbstractEffects {
-  constructor(private http: HttpClient, private actions$: Actions) {
+  constructor(
+    private http: HttpClient,
+    private actions$: Actions,
+    private router: Router,
+    private snackBar: MatSnackBar
+  ) {
     super(http);
   }
 
   @Effect()
   inloggen$ = this.createEffect(this.actions$, authenticatieActions.ActionTypes.INLOGGEN, inloggen);
 
-  @Effect()
+  @Effect({ dispatch: false })
   uitloggen$ = this.createEffect(
     this.actions$,
     authenticatieActions.ActionTypes.UITLOGGEN,
     uitloggen
+  ).pipe(
+    tap(() => this.router.navigate(['/inloggen'])),
+    tap(() => this.snackBar.open('U bent uitgelogd', '', { panelClass: 'info', duration: 3000 }))
   );
 }

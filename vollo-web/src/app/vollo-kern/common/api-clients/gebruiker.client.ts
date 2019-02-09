@@ -4,7 +4,5 @@ import { catchError } from 'rxjs/operators';
 import { of as observableOf } from 'rxjs';
 
 export function uitloggen(action: authenticatieActions.InloggenAction, http: HttpClient) {
-  return http
-    .post('/api/gebruiker/uitloggen', null)
-    .pipe(catchError(error => observableOf(new authenticatieActions.InloggenMisluktAction(error))));
+  return http.post('/api/gebruiker/uitloggen', null);
 }

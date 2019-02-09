@@ -43,6 +43,9 @@ form.ng-invalid.ng-touched {
 }
 
 .mat-snack-bar-container {
+  &.info {
+    color: $primary-color;
+  }
   &.error {
     color: $error-color;
   }
