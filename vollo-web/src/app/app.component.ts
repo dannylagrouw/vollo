@@ -31,7 +31,7 @@ export class AppComponent {
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer
   ) {
-    uiStoreService.toonFoutmelding('test', 'Dit is een foutmelding');
+    authenticatieStoreService.ophalenIngelogdeGebruiker();
 
     this.matIconRegistry.addSvgIcon(
       'parent',

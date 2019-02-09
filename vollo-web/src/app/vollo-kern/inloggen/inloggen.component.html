@@ -5,12 +5,16 @@
           (ngSubmit)="inloggen()">
       <mat-form-field>
         <input matInput
+               autocomplete="false"
+               autocapitalize="off"
+               autofocus
                placeholder="Gebruikersnaam"
                [(ngModel)]="form.gebruikersnaam"
                name="gebruikersnaam">
       </mat-form-field>
       <mat-form-field>
         <input matInput
+               type="password"
                placeholder="Wachtwoord"
                [(ngModel)]="form.wachtwoord"
                name="wachtwoord">

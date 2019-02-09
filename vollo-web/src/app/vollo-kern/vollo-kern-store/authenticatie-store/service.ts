@@ -17,4 +17,8 @@ export class AuthenticatieStoreService {
   uitloggen() {
     this.store.dispatch(new authenticatieActions.UitloggenAction());
   }
+
+  ophalenIngelogdeGebruiker() {
+    this.store.dispatch(new authenticatieActions.OphalenIngelogdeGebruikerAction());
+  }
 }

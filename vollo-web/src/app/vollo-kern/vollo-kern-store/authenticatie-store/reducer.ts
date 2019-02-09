@@ -13,10 +13,17 @@ export function authenticatieReducer(state = initialState, action: Actions): Sta
       };
     case ActionTypes.INLOGGEN_MISLUKT:
     case ActionTypes.UITLOGGEN:
+    case ActionTypes.OPHALEN_INGELOGDE_GEBRUIKER_MISLUKT:
       return {
         ...state,
         gebruikersnaam: null,
         ingelogd: false
+      };
+    case ActionTypes.OPHALEN_INGELOGDE_GEBRUIKER_SUCCES:
+      return {
+        ...state,
+        gebruikersnaam: action.gebruiker.gebruikersnaam,
+        ingelogd: true
       };
     default: {
       return state;

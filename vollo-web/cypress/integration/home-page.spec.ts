@@ -13,6 +13,7 @@ describe('Home Page', () => {
     inloggen('m1');
 
     expect(cy.contains('Welkom terug'));
+    cy.getCookie('vollo_token').should('not.be.empty');
   });
 
   it('moet foutmelding tonen bij onjuist inloggen', () => {
@@ -20,6 +21,7 @@ describe('Home Page', () => {
 
     expect(cy.contains('Onjuiste gebruikersnaam en/of wachtwoord'));
     cy.get('[aria-label="Gebruikermenu"]').should('be.disabled');
+    cy.getCookie('vollo_token').should('be.null');
   });
 
   it('moet gebruikermenu tonen', () => {
@@ -32,6 +34,15 @@ describe('Home Page', () => {
     cy.get('[aria-label="Gebruikermenu"]').should('not.be.disabled');
   });
 
+  it('moet ingelogd blijven na verversen pagina', () => {
+    inloggen('m1');
+
+    cy.reload();
+
+    cy.get('[aria-label="Gebruikermenu"]').should('not.be.disabled');
+    cy.getCookie('vollo_token').should('not.be.empty');
+  });
+
   it('moet uitloggen', () => {
     inloggen('m1');
     cy.get('[aria-label="Gebruikermenu"]').click();
@@ -39,6 +50,7 @@ describe('Home Page', () => {
     cy.get('[aria-label="Uitloggen"]').click();
 
     cy.get('[aria-label="Gebruikermenu"]').should('be.disabled');
+    cy.getCookie('vollo_token').should('be.null');
   });
 
   function inloggen(gebruiker: string) {
