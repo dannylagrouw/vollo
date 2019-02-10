@@ -31,8 +31,6 @@ export class AppComponent {
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer
   ) {
-    authenticatieStoreService.ophalenIngelogdeGebruiker();
-
     this.matIconRegistry.addSvgIcon(
       'parent',
       this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/icons/noun_parent_5036.svg')
