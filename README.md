@@ -1,3 +1,6 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/fdda56b2c070f9279bb4/maintainability)](https://codeclimate.com/github/vollo-lvs/vollo/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/fdda56b2c070f9279bb4/test_coverage)](https://codeclimate.com/github/vollo-lvs/vollo/test_coverage)
+
 # vollo
 
 npm install angular/flex-layout-builds --save
