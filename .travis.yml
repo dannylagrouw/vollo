@@ -1,0 +1,5 @@
+language:
+  java
+script:
+  - cd vollo-kern
+  - mvn clean install
