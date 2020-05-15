@@ -42,6 +42,8 @@ mvn spring-boot:run -Dspring-boot.run.arguments=--genereer-testdata
 - disable scherm tijdens requests?
 - backend: vervang Date door Local/ZonedDates
 - verplaats liquibase.properties naar subprojecten
+- leerling/notities: badge met aantal
+- leerling/notities/notitie: foto mdw ipv icon?
 
 ### Kafka
 
